@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Resultados Oficiales | BOEL Tierlist</title>
+
+  <style>
+    :root {
+      --bg: #030405;
+      --bg-soft: #07090c;
+      --panel: #0b0e13;
+      --panel-2: #11161e;
+      --panel-3: #151c27;
+
+      --text: #f5f7fb;
+      --muted: #9ba4b3;
+      --line: rgba(255, 255, 255, 0.08);
+      --line-gold: rgba(218, 184, 73, 0.3);
+
+      --gold: #dab849;
+      --gold-light: #f4d879;
+      --gold-dark: #7a5d17;
+
+      --blue: #5791ff;
+      --blue-light: #9bc0ff;
+      --green: #58d58e;
+      --red: #ff6876;
+
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.48);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max-width: 1280px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 50% -10%, rgba(218, 184, 73, 0.12), transparent 32%),
+        radial-gradient(circle at 8% 40%, rgba(78, 135, 217, 0.07), transparent 24%),
+        linear-gradient(180deg, #020303 0%, #06080b 42%, #030405 100%);
+      color: var(--text);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      content: "";
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(to bottom, black, transparent 78%);
+    }
+
+    body::after {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      content: "";
+      pointer-events: none;
+      background:
+        linear-gradient(115deg, transparent 0 48%, rgba(218, 184, 73, 0.025) 48% 49%, transparent 49%),
+        linear-gradient(65deg, transparent 0 63%, rgba(255, 255, 255, 0.018) 63% 64%, transparent 64%);
+    }
+
+    button,
+    input,
+    select {
+      font: inherit;
+    }
+
+    button {
+      border: 0;
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .page-shell {
+      width: min(var(--max-width), calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 14px 0;
+      background: rgba(3, 4, 5, 0.78);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 0;
+    }
+
+    .brand-logo-box {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      border: 1px solid var(--line-gold);
+      border-radius: 14px;
+      background: #080a0d;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    .brand-logo {
+      width: 39px;
+      height: 39px;
+      object-fit: contain;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-copy strong {
+      display: block;
+      color: white;
+      font-size: 17px;
+      letter-spacing: 0.055em;
+      white-space: nowrap;
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(10, 13, 18, 0.86);
+    }
+
+    .nav-link {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 17px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.045em;
+      text-transform: uppercase;
+      transition: 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .nav-link:hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.055);
+    }
+
+    .nav-link.active {
+      color: #161208;
+      background: linear-gradient(180deg, var(--gold-light), var(--gold));
+      box-shadow: 0 9px 22px rgba(218, 184, 73, 0.18);
+    }
+
+    .nav-login {
+      border: 1px solid rgba(218, 184, 73, 0.28);
+      color: var(--gold-light);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: end;
+      gap: 32px;
+      margin-top: 26px;
+      padding: 42px;
+      border: 1px solid var(--line-gold);
+      border-radius: var(--radius-xl);
+      background:
+        radial-gradient(circle at 92% 18%, rgba(218, 184, 73, 0.15), transparent 31%),
+        linear-gradient(180deg, rgba(17, 22, 30, 0.96), rgba(7, 9, 13, 0.98));
+      box-shadow: var(--shadow);
+    }
+
+    .hero::after {
+      position: absolute;
+      right: -90px;
+      bottom: -140px;
+      width: 390px;
+      height: 390px;
+      content: "";
+      border-radius: 50%;
+      border: 1px solid rgba(218, 184, 73, 0.1);
+      box-shadow:
+        0 0 0 55px rgba(218, 184, 73, 0.018),
+        0 0 0 110px rgba(218, 184, 73, 0.01);
+      pointer-events: none;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 32px;
+      padding: 0 13px;
+      margin-bottom: 17px;
+      border: 1px solid var(--line-gold);
+      border-radius: 999px;
+      color: var(--gold-light);
+      background: rgba(218, 184, 73, 0.06);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 7px;
+      height: 7px;
+      content: "";
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 14px rgba(218, 184, 73, 0.8);
+    }
+
+    .hero h1 {
+      color: white;
+      font-size: clamp(38px, 6vw, 72px);
+      line-height: 0.92;
+      letter-spacing: -0.055em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 span {
+      color: var(--gold-light);
+    }
+
+    .hero p {
+      max-width: 760px;
+      margin-top: 17px;
+      color: #b2bac6;
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .hero-count {
+      position: relative;
+      z-index: 2;
+      min-width: 170px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(7, 10, 14, 0.76);
+      text-align: center;
+    }
+
+    .hero-count strong {
+      display: block;
+      color: var(--gold-light);
+      font-size: 40px;
+      line-height: 1;
+      margin-bottom: 7px;
+    }
+
+    .hero-count span {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .summary-card {
+      padding: 17px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: linear-gradient(180deg, #0c1016, #090c11);
+      box-shadow: 0 15px 34px rgba(0, 0, 0, 0.26);
+    }
+
+    .summary-card span {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .summary-card strong {
+      color: white;
+      font-size: 25px;
+    }
+
+    .summary-card.normal strong {
+      color: var(--gold-light);
+    }
+
+    .summary-card.high strong {
+      color: var(--blue-light);
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: minmax(0, 1.55fr) minmax(190px, 0.65fr) auto;
+      gap: 11px;
+      padding: 14px;
+      margin-bottom: 13px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(10, 13, 18, 0.88);
+      box-shadow: 0 16px 38px rgba(0, 0, 0, 0.28);
+    }
+
+    .field {
+      width: 100%;
+      min-height: 47px;
+      padding: 0 14px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      outline: none;
+      background: #080c12;
+      color: white;
+      transition: 0.16s ease;
+    }
+
+    .field:focus {
+      border-color: rgba(218, 184, 73, 0.4);
+      box-shadow: 0 0 0 3px rgba(218, 184, 73, 0.075);
+    }
+
+    select option {
+      background: #080c12;
+      color: white;
+    }
+
+    .refresh {
+      min-height: 47px;
+      padding: 0 20px;
+      border: 1px solid rgba(244, 216, 121, 0.48);
+      border-radius: 12px;
+      background: linear-gradient(180deg, var(--gold-light), #ba942f);
+      color: #171207;
+      font-size: 12px;
+      font-weight: 1000;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: 0.16s ease;
+    }
+
+    .refresh:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+
+    .tabs {
+      display: flex;
+      gap: 9px;
+      margin-bottom: 18px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tabs::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab {
+      min-height: 43px;
+      flex: 0 0 auto;
+      padding: 0 18px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #0a0e14;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      white-space: nowrap;
+      transition: 0.16s ease;
+    }
+
+    .tab:hover {
+      color: white;
+      border-color: rgba(218, 184, 73, 0.28);
+    }
+
+    .tab.active {
+      color: #171207;
+      border-color: rgba(244, 216, 121, 0.5);
+      background: linear-gradient(180deg, var(--gold-light), var(--gold));
+    }
+
+    .state {
+      display: none;
+      padding: 48px 20px;
+      border: 1px dashed var(--line);
+      border-radius: 18px;
+      background: rgba(10, 13, 18, 0.68);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .state.show {
+      display: block;
+    }
+
+    .state strong {
+      display: block;
+      margin-bottom: 7px;
+      color: white;
+      font-size: 16px;
+    }
+
+    .results {
+      display: grid;
+      gap: 16px;
+      padding-bottom: 66px;
+    }
+
+    .result-card {
+      --accent: var(--gold);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background:
+        linear-gradient(180deg, rgba(17, 22, 30, 0.97), rgba(7, 9, 13, 0.99));
+      box-shadow: var(--shadow);
+      transition: 0.18s ease;
+    }
+
+    .result-card:hover {
+      border-color: color-mix(in srgb, var(--accent) 34%, transparent);
+      transform: translateY(-2px);
+    }
+
+    .result-card::before {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 4px;
+      content: "";
+      background: var(--accent);
+      box-shadow: 0 0 24px color-mix(in srgb, var(--accent) 50%, transparent);
+    }
+
+    .result-card.high {
+      --accent: var(--blue);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 20px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(6, 9, 13, 0.46);
+    }
+
+    .card-heading {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .type-badge,
+    .mode-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 29px;
+      padding: 0 10px;
+      border-radius: 999px;
+      font-size: 9px;
+      font-weight: 1000;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .type-badge {
+      border: 1px solid color-mix(in srgb, var(--accent) 42%, transparent);
+      color: color-mix(in srgb, var(--accent) 76%, white 24%);
+      background: color-mix(in srgb, var(--accent) 9%, transparent);
+    }
+
+    .mode-badge {
+      gap: 7px;
+      border: 1px solid var(--line);
+      color: #d7dde6;
+      background: #090d13;
+    }
+
+    .mode-badge img {
+      width: 19px;
+      height: 19px;
+      object-fit: contain;
+    }
+
+    .mode-badge.mode-nethpot img {
+      width: 23px;
+      height: 23px;
+    }
+
+    .card-date {
+      color: var(--muted);
+      font-size: 11px;
+      text-align: right;
+    }
+
+    .card-body {
+      padding: 21px;
+    }
+
+    .combatants {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 18px;
+      margin-bottom: 20px;
+    }
+
+    .combatant {
+      min-width: 0;
+    }
+
+    .combatant:last-child {
+      text-align: right;
+    }
+
+    .combatant small {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .combatant strong {
+      display: block;
+      overflow: hidden;
+      color: white;
+      font-size: clamp(21px, 3vw, 31px);
+      line-height: 1.05;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .versus {
+      min-width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent);
+      border-radius: 50%;
+      color: color-mix(in srgb, var(--accent) 76%, white 24%);
+      background:
+        linear-gradient(
+          145deg,
+          color-mix(in srgb, var(--accent) 14%, #0a0e14 86%),
+          #070a0f
+        );
+      font-size: 11px;
+      font-weight: 1000;
+      box-shadow: 0 9px 22px rgba(0, 0, 0, 0.32);
+    }
+
+    .tier-transition {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #080c12;
+    }
+
+    .tier-point {
+      min-width: 0;
+    }
+
+    .tier-point:last-child {
+      text-align: right;
+    }
+
+    .tier-point small {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .tier-value {
+      color: var(--accent);
+      font-size: 22px;
+      font-weight: 1000;
+    }
+
+    .tier-value.none {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .transition-arrow {
+      color: var(--muted);
+      font-size: 19px;
+      font-weight: 900;
+    }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .data-box {
+      min-width: 0;
+      padding: 13px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: rgba(7, 10, 15, 0.72);
+    }
+
+    .data-box small {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .data-box strong {
+      display: block;
+      overflow: hidden;
+      color: white;
+      font-size: 14px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .data-box strong.passed,
+    .data-box strong.won {
+      color: var(--green);
+    }
+
+    .data-box strong.failed,
+    .data-box strong.lost {
+      color: var(--red);
+    }
+
+    .data-box strong.score {
+      font-size: 21px;
+      letter-spacing: 0.04em;
+    }
+
+    .changes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .change-panel {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #080c12;
+    }
+
+    .change-panel > small {
+      display: block;
+      margin-bottom: 11px;
+      color: var(--muted);
+      font-size: 9px;
+      font-weight: 900;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .change-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .change-tier {
+      color: var(--accent);
+      font-size: 17px;
+      font-weight: 1000;
+    }
+
+    .change-tier.none {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .demotion {
+      display: inline-flex;
+      min-height: 27px;
+      align-items: center;
+      padding: 0 9px;
+      border: 1px solid rgba(255, 104, 118, 0.26);
+      border-radius: 999px;
+      color: var(--red);
+      background: rgba(255, 104, 118, 0.06);
+      font-size: 9px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 20px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 10px;
+      background: rgba(6, 9, 13, 0.4);
+    }
+
+    .footer {
+      padding: 0 0 28px;
+      color: #747d89;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    @media (max-width: 920px) {
+      .nav-wrap {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+        border-radius: 16px;
+        scrollbar-width: none;
+      }
+
+      .nav-links::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav-link {
+        flex: 0 0 auto;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        align-items: stretch;
+      }
+
+      .hero-count {
+        width: 100%;
+      }
+
+      .controls {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .controls .search-field {
+        grid-column: 1 / -1;
+      }
+
+      .data-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page-shell {
+        width: min(100% - 22px, var(--max-width));
+      }
+
+      .brand-copy span {
+        display: none;
+      }
+
+      .hero {
+        padding: 26px 22px;
+      }
+
+      .summary {
+        grid-template-columns: 1fr;
+      }
+
+      .controls {
+        grid-template-columns: 1fr;
+      }
+
+      .controls .search-field {
+        grid-column: auto;
+      }
+
+      .combatants {
+        grid-template-columns: minmax(0, 1fr) 40px minmax(0, 1fr);
+        gap: 9px;
+      }
+
+      .versus {
+        min-width: 40px;
+        height: 40px;
+      }
+
+      .combatant strong {
+        font-size: 18px;
+      }
+
+      .data-grid,
+      .changes-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card-header,
+      .card-body,
+      .card-footer {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .card-header,
+      .card-footer {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .card-date {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="page-shell nav-wrap">
+      <a class="brand" href="/" aria-label="Inicio BOEL">
+        <span class="brand-logo-box">
+          <img
+            class="brand-logo"
+            src="/boel.png"
+            alt="Logo BOEL"
+            onerror="this.style.display='none'"
+          />
+        </span>
+
+        <span class="brand-copy">
+          <strong>BOEL</strong>
+          <span>Brigada de Operaciones Especiales Lautaro</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a class="nav-link" href="/">Inicio</a>
+        <a class="nav-link" href="/Tiers.html">Tiers</a>
+        <a class="nav-link active" href="/results.html">Resultados</a>
+        <a class="nav-link" href="/simulink.html">Simulink</a>
+        <a class="nav-link nav-login" href="/admin.html">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Registro competitivo oficial</span>
+
+        <h1>
+          Resultados de
+          <span>Tests</span>
+        </h1>
+
+        <p>
+          Consulta tests normales y High Tests, incluyendo tiers anteriores,
+          tiers obtenidos, evaluaciones, marcadores, promociones y demociones
+          registradas dentro de la tierlist de BOEL.
+        </p>
+      </div>
+
+      <div class="hero-count">
+        <strong id="totalVisible">0</strong>
+        <span>Resultados visibles</span>
+      </div>
+    </section>
+
+    <section class="summary">
+      <article class="summary-card">
+        <span>Total registrados</span>
+        <strong id="totalRegistered">0</strong>
+      </article>
+
+      <article class="summary-card normal">
+        <span>Tests normales</span>
+        <strong id="normalCount">0</strong>
+      </article>
+
+      <article class="summary-card high">
+        <span>High Tests</span>
+        <strong id="highCount">0</strong>
+      </article>
+    </section>
+
+    <section class="controls">
+      <input
+        id="searchInput"
+        class="field search-field"
+        type="search"
+        placeholder="Buscar tester, testeado, retador o retado..."
+        autocomplete="off"
+      />
+
+      <select id="modeSelect" class="field">
+        <option value="">Todas las modalidades</option>
+        <option value="sword">Sword</option>
+        <option value="nethpot">NethPot</option>
+        <option value="uhc">UHC</option>
+      </select>
+
+      <button id="refreshButton" class="refresh" type="button">
+        Actualizar
+      </button>
+    </section>
+
+    <nav class="tabs" aria-label="Tipos de resultados">
+      <button class="tab active" data-type="ALL" type="button">Todos</button>
+      <button class="tab" data-type="NORMAL" type="button">Tests normales</button>
+      <button class="tab" data-type="HIGH" type="button">High Tests</button>
+    </nav>
+
+    <section id="loadingState" class="state show">
+      <strong>Cargando resultados...</strong>
+      Consultando los registros del servidor.
+    </section>
+
+    <section id="emptyState" class="state">
+      <strong>No se encontraron resultados</strong>
+      Prueba cambiando la búsqueda o los filtros.
+    </section>
+
+    <section id="errorState" class="state">
+      <strong>No se pudieron cargar los resultados</strong>
+      <span id="errorText"></span>
+    </section>
+
+    <section id="resultsList" class="results"></section>
+  </main>
+
+  <footer class="page-shell footer">
+    BOEL · Registro oficial de Tests y High Tests
+  </footer>
+
+  <script>
+    const MODE_DATA = {
+      sword: {
+        name: "Sword",
+        icon: "/sword.png",
+        className: "mode-sword"
+      },
+      nethpot: {
+        name: "NethPot",
+        icon: "/nthop.png",
+        className: "mode-nethpot"
+      },
+      uhc: {
+        name: "UHC",
+        icon: "/UHC.png",
+        className: "mode-uhc"
+      }
+    };
+
+    const state = {
+      tests: [],
+      type: "ALL",
+      mode: "",
+      search: ""
+    };
+
+    const elements = {
+      resultsList: document.getElementById("resultsList"),
+      loadingState: document.getElementById("loadingState"),
+      emptyState: document.getElementById("emptyState"),
+      errorState: document.getElementById("errorState"),
+      errorText: document.getElementById("errorText"),
+
+      totalVisible: document.getElementById("totalVisible"),
+      totalRegistered: document.getElementById("totalRegistered"),
+      normalCount: document.getElementById("normalCount"),
+      highCount: document.getElementById("highCount"),
+
+      searchInput: document.getElementById("searchInput"),
+      modeSelect: document.getElementById("modeSelect"),
+      refreshButton: document.getElementById("refreshButton"),
+      tabs: [...document.querySelectorAll(".tab")]
+    };
+
+    function escapeHTML(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function formatDate(value) {
+      const date = new Date(value);
+
+      if (Number.isNaN(date.getTime())) {
+        return "Fecha desconocida";
+      }
+
+      return new Intl.DateTimeFormat("es-MX", {
+        dateStyle: "medium",
+        timeStyle: "short"
+      }).format(date);
+    }
+
+    function getStatusClass(value) {
+      const normalized = String(value || "").toUpperCase();
+
+      if (normalized === "PASSED") return "passed";
+      if (normalized === "FAILED") return "failed";
+      if (normalized === "WON") return "won";
+      if (normalized === "LOST") return "lost";
+
+      return "";
+    }
+
+    function getStatusText(value) {
+      const normalized = String(value || "").toUpperCase();
+
+      return {
+        PASSED: "Passed",
+        FAILED: "Failed",
+        WON: "Won",
+        LOST: "Lost"
+      }[normalized] || value || "—";
+    }
+
+    function renderTierValue(value) {
+      if (!value) {
+        return '<strong class="tier-value none">Ninguno</strong>';
+      }
+
+      return `<strong class="tier-value">${escapeHTML(value)}</strong>`;
+    }
+
+    function renderCompactTier(value) {
+      if (!value) {
+        return '<span class="change-tier none">Ninguno</span>';
+      }
+
+      return `<span class="change-tier">${escapeHTML(value)}</span>`;
+    }
+
+    function renderModeBadge(mode) {
+      const modeData = MODE_DATA[mode] || {
+        name: mode || "—",
+        icon: "",
+        className: ""
+      };
+
+      return `
+        <span class="mode-badge ${modeData.className}">
+          ${modeData.icon
+            ? `
+              <img
+                src="${modeData.icon}"
+                alt="${escapeHTML(modeData.name)}"
+                onerror="this.style.display='none'"
+              />
+            `
+            : ""
+          }
+          ${escapeHTML(modeData.name)}
+        </span>
+      `;
+    }
+
+    function renderNormalCard(test) {
+      const results = test.resultados || {};
+
+      return `
+        <article class="result-card">
+          <div class="card-header">
+            <div class="card-heading">
+              <span class="type-badge">Test normal</span>
+              ${renderModeBadge(test.gamemode)}
+            </div>
+
+            <time class="card-date">${escapeHTML(formatDate(test.fecha))}</time>
+          </div>
+
+          <div class="card-body">
+            <div class="combatants">
+              <div class="combatant">
+                <small>Tester</small>
+                <strong>${escapeHTML(test.tester || "Desconocido")}</strong>
+              </div>
+
+              <div class="versus">→</div>
+
+              <div class="combatant">
+                <small>Testeado</small>
+                <strong>${escapeHTML(test.testeado || "Desconocido")}</strong>
+              </div>
+            </div>
+
+            <div class="tier-transition">
+              <div class="tier-point">
+                <small>Tier anterior</small>
+                ${renderTierValue(results.tierAnterior)}
+              </div>
+
+              <span class="transition-arrow">→</span>
+
+              <div class="tier-point">
+                <small>Tier obtenido</small>
+                ${renderTierValue(results.tierObtenido)}
+              </div>
+            </div>
+
+            <div class="data-grid">
+              <div class="data-box">
+                <small>Estado</small>
+                <strong class="passed">Completado</strong>
+              </div>
+
+              <div class="data-box">
+                <small>Peak anterior</small>
+                <strong>${escapeHTML(results.peakAnterior || "—")}</strong>
+              </div>
+
+              <div class="data-box">
+                <small>Peak nuevo</small>
+                <strong>${escapeHTML(results.peakNuevo || "—")}</strong>
+              </div>
+
+              <div class="data-box">
+                <small>Registrado por</small>
+                <strong>${escapeHTML(test.registradoPor || "Sistema")}</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <span>Registro: ${escapeHTML(test.id || "Sin ID")}</span>
+            <span>Resultado oficial BOEL</span>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderHighCard(test) {
+      const changes = test.cambiosTier || {};
+      const challenger = changes.retador || {};
+      const challenged = changes.retado || {};
+
+      return `
+        <article class="result-card high">
+          <div class="card-header">
+            <div class="card-heading">
+              <span class="type-badge">High Test</span>
+              ${renderModeBadge(test.gamemode)}
+            </div>
+
+            <time class="card-date">${escapeHTML(formatDate(test.fecha))}</time>
+          </div>
+
+          <div class="card-body">
+            <div class="combatants">
+              <div class="combatant">
+                <small>Retador</small>
+                <strong>${escapeHTML(test.retador || "Desconocido")}</strong>
+              </div>
+
+              <div class="versus">${escapeHTML(test.marcador || "VS")}</div>
+
+              <div class="combatant">
+                <small>Retado</small>
+                <strong>${escapeHTML(test.retado || "Desconocido")}</strong>
+              </div>
+            </div>
+
+            <div class="data-grid">
+              <div class="data-box">
+                <small>Evaluación</small>
+                <strong class="${getStatusClass(test.eval)}">
+                  ${escapeHTML(getStatusText(test.eval))}
+                </strong>
+              </div>
+
+              <div class="data-box">
+                <small>Resultado del proceso</small>
+                <strong class="${getStatusClass(test.resultado)}">
+                  ${escapeHTML(getStatusText(test.resultado))}
+                </strong>
+              </div>
+
+              <div class="data-box">
+                <small>Resultado del combate</small>
+                <strong class="${getStatusClass(test.desenlace)}">
+                  ${escapeHTML(getStatusText(test.desenlace))}
+                </strong>
+              </div>
+
+              <div class="data-box">
+                <small>Marcador</small>
+                <strong class="score">${escapeHTML(test.marcador || "—")}</strong>
+              </div>
+            </div>
+
+            <div class="changes-grid">
+              <article class="change-panel">
+                <small>Cambio del retador</small>
+
+                <div class="change-row">
+                  ${renderCompactTier(challenger.anterior)}
+                  <span class="transition-arrow">→</span>
+                  ${renderCompactTier(challenger.nuevo)}
+                </div>
+              </article>
+
+              <article class="change-panel">
+                <small>Cambio del retado</small>
+
+                <div class="change-row">
+                  ${renderCompactTier(challenged.anterior)}
+                  <span class="transition-arrow">→</span>
+                  ${renderCompactTier(challenged.nuevo)}
+
+                  ${challenged.demoteado
+                    ? '<span class="demotion">Demoteado</span>'
+                    : ""
+                  }
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="card-footer">
+            <span>Registrado por: ${escapeHTML(test.registradoPor || "Sistema")}</span>
+            <span>${challenged.demoteado ? "Democión aplicada" : "Sin democión"}</span>
+          </div>
+        </article>
+      `;
+    }
+
+    function getParticipants(test) {
+      if (test.tipo === "HIGH") {
+        return [test.retador, test.retado];
+      }
+
+      return [test.tester, test.testeado];
+    }
+
+    function getFilteredTests() {
+      const query = state.search.trim().toLowerCase();
+
+      return state.tests.filter(test => {
+        if (state.type !== "ALL" && test.tipo !== state.type) {
+          return false;
+        }
+
+        if (state.mode && test.gamemode !== state.mode) {
+          return false;
+        }
+
+        if (query) {
+          const participants = getParticipants(test)
+            .filter(Boolean)
+            .join(" ")
+            .toLowerCase();
+
+          if (!participants.includes(query)) {
+            return false;
+          }
+        }
+
+        return true;
+      });
+    }
+
+    function updateSummary() {
+      elements.totalRegistered.textContent = state.tests.length;
+      elements.normalCount.textContent = state.tests.filter(
+        test => test.tipo === "NORMAL"
+      ).length;
+      elements.highCount.textContent = state.tests.filter(
+        test => test.tipo === "HIGH"
+      ).length;
+    }
+
+    function render() {
+      const filteredTests = getFilteredTests();
+
+      elements.totalVisible.textContent = filteredTests.length;
+      elements.resultsList.innerHTML = filteredTests
+        .map(test => test.tipo === "HIGH"
+          ? renderHighCard(test)
+          : renderNormalCard(test)
+        )
+        .join("");
+
+      elements.emptyState.classList.toggle(
+        "show",
+        filteredTests.length === 0
+      );
+    }
+
+    async function loadTests() {
+      elements.loadingState.classList.add("show");
+      elements.errorState.classList.remove("show");
+      elements.emptyState.classList.remove("show");
+      elements.resultsList.innerHTML = "";
+
+      try {
+        const response = await fetch("/api/tests", {
+          headers: {
+            Accept: "application/json"
+          },
+          cache: "no-store"
+        });
+
+        if (!response.ok) {
+          let message = `Error HTTP ${response.status}`;
+
+          try {
+            const data = await response.json();
+            message = data.error || message;
+          } catch {
+            // La respuesta no era JSON.
+          }
+
+          throw new Error(message);
+        }
+
+        const data = await response.json();
+
+        if (!Array.isArray(data)) {
+          throw new Error("El servidor no devolvió una lista de resultados.");
+        }
+
+        state.tests = data.sort((a, b) =>
+          new Date(b.fecha || 0) - new Date(a.fecha || 0)
+        );
+
+        updateSummary();
+        render();
+      } catch (error) {
+        console.error(error);
+
+        elements.totalVisible.textContent = "0";
+        elements.totalRegistered.textContent = "0";
+        elements.normalCount.textContent = "0";
+        elements.highCount.textContent = "0";
+        elements.errorText.textContent = error.message || "Error desconocido";
+        elements.errorState.classList.add("show");
+      } finally {
+        elements.loadingState.classList.remove("show");
+      }
+    }
+
+    elements.tabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        elements.tabs.forEach(item => item.classList.remove("active"));
+        tab.classList.add("active");
+
+        state.type = tab.dataset.type;
+        render();
+      });
+    });
+
+    elements.searchInput.addEventListener("input", event => {
+      state.search = event.target.value;
+      render();
+    });
+
+    elements.modeSelect.addEventListener("change", event => {
+      state.mode = event.target.value;
+      render();
+    });
+
+    elements.refreshButton.addEventListener("click", loadTests);
+
+    loadTests();
+  </script>
+</body>
+</html>

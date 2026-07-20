@@ -1,0 +1,1250 @@
+[
+  {
+    "id": "1781859794200",
+    "username": "pinaaa_",
+    "uuid": "27020bd9-bf2f-4a09-b626-4d899a15cf22",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/pinaaa_?size=160",
+    "tiers": {
+      "sword": "HT3",
+      "nethpot": null,
+      "uhc": null
+    },
+    "peakTiers": {
+      "sword": "HT3",
+      "nethpot": "HT3",
+      "uhc": "LT5"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-19T09:03:29.706Z"
+        },
+        {
+          "tier": null,
+          "fecha": "2026-07-20T19:26:51.906Z"
+        },
+        {
+          "tier": "LT3",
+          "fecha": "2026-07-20T19:27:09.813Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-07-20T19:28:16.620Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-19T09:03:29.711Z"
+        },
+        {
+          "tier": null,
+          "fecha": "2026-07-20T19:26:51.918Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "LT5",
+          "fecha": "2026-06-19T09:03:29.715Z"
+        },
+        {
+          "tier": null,
+          "fecha": "2026-07-20T19:26:51.922Z"
+        }
+      ]
+    },
+    "fechaRegistro": "2026-06-19T09:03:14.200Z",
+    "tiersPuntuados": {
+      "sword": "HT3",
+      "nethpot": null,
+      "uhc": null
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 10,
+      "nethpot": 0,
+      "uhc": 0,
+      "total": 10
+    },
+    "tierGeneral": "Tier 5"
+  },
+  {
+    "id": "1781859839520",
+    "username": "EffectNova",
+    "uuid": "4e42a7c9-15f7-4a8c-b84c-902814822d17",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/EffectNova?size=160",
+    "tiers": {
+      "sword": "HT1",
+      "nethpot": "HT1",
+      "uhc": "LT3"
+    },
+    "peakTiers": {
+      "sword": "HT1",
+      "nethpot": "HT1",
+      "uhc": "LT3"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "HT1",
+          "fecha": "2026-06-19T09:04:12.893Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "HT1",
+          "fecha": "2026-06-19T09:04:12.897Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-19T09:04:12.901Z"
+        }
+      ]
+    },
+    "fechaRegistro": "2026-06-19T09:03:59.520Z",
+    "tiersPuntuados": {
+      "sword": "HT1",
+      "nethpot": "HT1",
+      "uhc": "LT3"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 60,
+      "nethpot": 60,
+      "uhc": 6,
+      "total": 126
+    },
+    "tierGeneral": "Tier 1"
+  },
+  {
+    "id": "1781859862483",
+    "username": "wKoraii",
+    "uuid": "abe243af-bebc-4bc3-bc62-ce0bb99511cd",
+    "region": "NA",
+    "skinHeadUrl": "/api/skin-head/wKoraii?size=160",
+    "tiers": {
+      "sword": "LT2",
+      "nethpot": "HT3",
+      "uhc": "HT4"
+    },
+    "peakTiers": {
+      "sword": "HT1",
+      "nethpot": "HT1",
+      "uhc": "HT2"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-19T09:04:56.073Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-24T04:15:23.913Z"
+        },
+        {
+          "tier": "LT2",
+          "fecha": "2026-06-24T04:15:47.970Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-24T04:16:03.630Z"
+        },
+        {
+          "tier": "LT2",
+          "fecha": "2026-06-24T04:16:07.372Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-24T04:16:24.340Z"
+        },
+        {
+          "tier": "LT2",
+          "fecha": "2026-06-24T04:16:27.125Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-24T04:16:53.989Z"
+        },
+        {
+          "tier": "LT2",
+          "fecha": "2026-06-24T04:25:38.173Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-24T04:25:40.829Z"
+        },
+        {
+          "tier": "LT4",
+          "fecha": "2026-06-24T18:36:48.913Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-24T18:37:01.065Z"
+        },
+        {
+          "tier": "LT2",
+          "fecha": "2026-06-24T18:45:00.561Z"
+        },
+        {
+          "tier": "HT1",
+          "fecha": "2026-06-24T18:47:13.281Z"
+        },
+        {
+          "tier": "HT2",
+          "fecha": "2026-06-24T18:49:23.056Z"
+        },
+        {
+          "tier": "LT2",
+          "fecha": "2026-06-24T18:49:40.733Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-19T09:04:56.077Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-24T04:15:53.898Z"
+        },
+        {
+          "tier": "LT2",
+          "fecha": "2026-06-24T04:25:40.842Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-24T04:25:43.714Z"
+        },
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-24T18:37:01.069Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-24T18:44:39.601Z"
+        },
+        {
+          "tier": "LT2",
+          "fecha": "2026-06-24T18:44:55.506Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-24T18:45:00.576Z"
+        },
+        {
+          "tier": "HT1",
+          "fecha": "2026-06-24T18:47:13.285Z"
+        },
+        {
+          "tier": "HT2",
+          "fecha": "2026-06-24T18:49:23.060Z"
+        },
+        {
+          "tier": "LT2",
+          "fecha": "2026-06-24T18:49:40.737Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-07-20T19:26:43.654Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "LT4",
+          "fecha": "2026-06-19T09:04:56.080Z"
+        },
+        {
+          "tier": "HT5",
+          "fecha": "2026-06-19T09:05:00.460Z"
+        },
+        {
+          "tier": "LT5",
+          "fecha": "2026-06-19T09:05:02.722Z"
+        },
+        {
+          "tier": "LT4",
+          "fecha": "2026-06-19T09:23:14.852Z"
+        },
+        {
+          "tier": null,
+          "fecha": "2026-06-19T09:39:49.839Z"
+        },
+        {
+          "tier": "LT4",
+          "fecha": "2026-06-24T04:15:29.828Z"
+        },
+        {
+          "tier": "HT4",
+          "fecha": "2026-06-24T04:15:35.601Z"
+        },
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-24T04:15:37.793Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-24T04:15:40.664Z"
+        },
+        {
+          "tier": "LT2",
+          "fecha": "2026-06-24T04:15:43.672Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-24T04:15:46.281Z"
+        },
+        {
+          "tier": "LT5",
+          "fecha": "2026-06-24T04:15:49.451Z"
+        },
+        {
+          "tier": "LT4",
+          "fecha": "2026-06-24T04:16:00.944Z"
+        },
+        {
+          "tier": "HT5",
+          "fecha": "2026-06-24T04:16:15.560Z"
+        },
+        {
+          "tier": "LT5",
+          "fecha": "2026-06-24T04:16:18.001Z"
+        },
+        {
+          "tier": "LT4",
+          "fecha": "2026-06-24T04:16:22.738Z"
+        },
+        {
+          "tier": "LT5",
+          "fecha": "2026-06-24T04:16:32.163Z"
+        },
+        {
+          "tier": "HT5",
+          "fecha": "2026-06-24T04:16:57.508Z"
+        },
+        {
+          "tier": "HT4",
+          "fecha": "2026-06-24T04:16:59.451Z"
+        },
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-24T04:17:00.863Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-24T04:17:16.658Z"
+        },
+        {
+          "tier": "HT5",
+          "fecha": "2026-06-24T04:25:36.190Z"
+        },
+        {
+          "tier": "LT4",
+          "fecha": "2026-06-24T18:37:05.618Z"
+        },
+        {
+          "tier": "HT5",
+          "fecha": "2026-06-24T18:37:09.394Z"
+        },
+        {
+          "tier": "LT4",
+          "fecha": "2026-06-24T18:44:50.933Z"
+        },
+        {
+          "tier": "HT5",
+          "fecha": "2026-06-24T18:44:52.729Z"
+        },
+        {
+          "tier": "LT5",
+          "fecha": "2026-06-24T18:47:13.289Z"
+        },
+        {
+          "tier": "HT2",
+          "fecha": "2026-06-24T18:49:30.992Z"
+        },
+        {
+          "tier": "LT2",
+          "fecha": "2026-06-24T18:49:40.741Z"
+        },
+        {
+          "tier": "HT4",
+          "fecha": "2026-07-20T19:26:43.658Z"
+        }
+      ]
+    },
+    "fechaRegistro": "2026-06-19T09:04:22.483Z",
+    "tiersPuntuados": {
+      "sword": "LT2",
+      "nethpot": "HT3",
+      "uhc": "HT4"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 20,
+      "nethpot": 10,
+      "uhc": 4,
+      "total": 34
+    },
+    "tierGeneral": "Tier 3"
+  },
+  {
+    "id": "1781859919037",
+    "username": "ArtiJ",
+    "uuid": "a8bfd510-daf5-484c-9210-857ae56c0c55",
+    "region": "NA",
+    "skinHeadUrl": "/api/skin-head/ArtiJ?size=160",
+    "tiers": {
+      "sword": "HT2",
+      "nethpot": "LT2",
+      "uhc": "LT2"
+    },
+    "peakTiers": {
+      "sword": "HT2",
+      "nethpot": "LT2",
+      "uhc": "LT2"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "HT2",
+          "fecha": "2026-06-19T09:06:14.172Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "LT2",
+          "fecha": "2026-06-19T09:06:14.175Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "LT2",
+          "fecha": "2026-06-19T09:06:14.178Z"
+        }
+      ]
+    },
+    "fechaRegistro": "2026-06-19T09:05:19.037Z",
+    "tiersPuntuados": {
+      "sword": "HT2",
+      "nethpot": "LT2",
+      "uhc": "LT2"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 30,
+      "nethpot": 20,
+      "uhc": 20,
+      "total": 70
+    },
+    "tierGeneral": "Tier 2"
+  },
+  {
+    "id": "1781861272923",
+    "username": "Varlyaaa",
+    "uuid": "0128a929-2e0d-49b6-b16a-9e69c8e11284",
+    "region": "NA",
+    "skinHeadUrl": "/api/skin-head/Varlyaaa?size=160",
+    "tiers": {
+      "sword": "LT3",
+      "nethpot": "LT1",
+      "uhc": "HT1"
+    },
+    "peakTiers": {
+      "sword": "HT1",
+      "nethpot": "HT1",
+      "uhc": "HT1"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "HT1",
+          "fecha": "2026-06-19T09:28:16.141Z"
+        },
+        {
+          "tier": "LT1",
+          "fecha": "2026-06-19T09:29:08.066Z"
+        },
+        {
+          "tier": "HT1",
+          "fecha": "2026-06-19T09:29:20.496Z"
+        },
+        {
+          "tier": "LT3",
+          "fecha": "2026-07-20T19:24:29.338Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "HT1",
+          "fecha": "2026-06-19T09:28:16.147Z"
+        },
+        {
+          "tier": "LT1",
+          "fecha": "2026-06-19T09:29:20.502Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "LT1",
+          "fecha": "2026-06-19T09:28:16.151Z"
+        },
+        {
+          "tier": "HT1",
+          "fecha": "2026-06-19T09:29:08.070Z"
+        }
+      ]
+    },
+    "fechaRegistro": "2026-06-19T09:27:52.923Z",
+    "tiersPuntuados": {
+      "sword": "LT3",
+      "nethpot": "LT1",
+      "uhc": "HT1"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 6,
+      "nethpot": 40,
+      "uhc": 60,
+      "total": 106
+    },
+    "tierGeneral": "Tier 1"
+  },
+  {
+    "id": "1781861311280",
+    "username": "nFyq_",
+    "uuid": "77c3b501-f1c0-4a34-8845-1c0ccdfe116c",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/nFyq_?size=160",
+    "tiers": {
+      "sword": "LT1",
+      "nethpot": "HT1",
+      "uhc": "LT3"
+    },
+    "peakTiers": {
+      "sword": "LT1",
+      "nethpot": "HT1",
+      "uhc": "LT3"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "LT1",
+          "fecha": "2026-06-19T09:29:50.930Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "HT1",
+          "fecha": "2026-06-19T09:29:50.934Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-19T09:29:50.938Z"
+        }
+      ]
+    },
+    "fechaRegistro": "2026-06-19T09:28:31.280Z",
+    "tiersPuntuados": {
+      "sword": "LT1",
+      "nethpot": "HT1",
+      "uhc": "LT3"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 40,
+      "nethpot": 60,
+      "uhc": 6,
+      "total": 106
+    },
+    "tierGeneral": "Tier 1"
+  },
+  {
+    "id": "1781861479021",
+    "username": "Zanekichi",
+    "uuid": "128da628-d73e-4ea9-ba4a-f22fa8efae46",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/Zanekichi?size=160",
+    "tiers": {
+      "sword": "LT3",
+      "nethpot": "LT3",
+      "uhc": "LT4"
+    },
+    "peakTiers": {
+      "sword": "LT3",
+      "nethpot": "LT3",
+      "uhc": "LT4"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-19T09:32:27.897Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-19T09:32:27.900Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "LT4",
+          "fecha": "2026-06-19T09:32:27.904Z"
+        }
+      ]
+    },
+    "fechaRegistro": "2026-06-19T09:31:19.021Z",
+    "tiersPuntuados": {
+      "sword": "LT3",
+      "nethpot": "LT3",
+      "uhc": "LT4"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 6,
+      "nethpot": 6,
+      "uhc": 3,
+      "total": 15
+    },
+    "tierGeneral": "Tier 4"
+  },
+  {
+    "id": "1781861571519",
+    "username": "esmegmanuel",
+    "uuid": "47459894-2d69-4384-8379-e915cbd8a252",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/esmegmanuel?size=160",
+    "tiers": {
+      "sword": "LT2",
+      "nethpot": "LT2",
+      "uhc": "LT3"
+    },
+    "peakTiers": {
+      "sword": "LT2",
+      "nethpot": "LT2",
+      "uhc": "LT3"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "LT2",
+          "fecha": "2026-06-19T09:33:14.608Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "LT2",
+          "fecha": "2026-06-19T09:33:14.613Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-19T09:33:14.617Z"
+        }
+      ]
+    },
+    "fechaRegistro": "2026-06-19T09:32:51.519Z",
+    "tiersPuntuados": {
+      "sword": "LT2",
+      "nethpot": "LT2",
+      "uhc": "LT3"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 20,
+      "nethpot": 20,
+      "uhc": 6,
+      "total": 46
+    },
+    "tierGeneral": "Tier 3"
+  },
+  {
+    "id": "1781861637302",
+    "username": "OutFresh",
+    "uuid": "684ffd16-af32-47b3-946e-5f359377ded1",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/OutFresh?size=160",
+    "tiers": {
+      "sword": "HT2",
+      "nethpot": "HT2",
+      "uhc": "LT3"
+    },
+    "peakTiers": {
+      "sword": "HT2",
+      "nethpot": "HT2",
+      "uhc": "LT3"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "HT2",
+          "fecha": "2026-06-19T09:34:06.287Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "HT2",
+          "fecha": "2026-06-19T09:34:06.291Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-19T09:34:06.296Z"
+        }
+      ]
+    },
+    "fechaRegistro": "2026-06-19T09:33:57.302Z",
+    "tiersPuntuados": {
+      "sword": "HT2",
+      "nethpot": "HT2",
+      "uhc": "LT3"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 30,
+      "nethpot": 30,
+      "uhc": 6,
+      "total": 66
+    },
+    "tierGeneral": "Tier 2"
+  },
+  {
+    "id": "1781861793005",
+    "username": "Juanmaachu",
+    "uuid": "ffb6bfcd-6947-4a32-aab1-0b837fbc23d7",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/Juanmaachu?size=160",
+    "tiers": {
+      "sword": "LT3",
+      "nethpot": "LT3",
+      "uhc": "LT4"
+    },
+    "peakTiers": {
+      "sword": "LT3",
+      "nethpot": "LT3",
+      "uhc": "LT4"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-19T09:36:58.614Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-19T09:36:58.621Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "LT4",
+          "fecha": "2026-06-19T09:36:58.625Z"
+        }
+      ]
+    },
+    "fechaRegistro": "2026-06-19T09:36:33.005Z",
+    "tiersPuntuados": {
+      "sword": "LT3",
+      "nethpot": "LT3",
+      "uhc": "LT4"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 6,
+      "nethpot": 6,
+      "uhc": 3,
+      "total": 15
+    },
+    "tierGeneral": "Tier 4"
+  },
+  {
+    "id": "1781861860550",
+    "username": "Vamsillo",
+    "uuid": "af2a672f-6767-4366-8d2e-d4db2f6ebcc6",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/Vamsillo?size=160",
+    "tiers": {
+      "sword": "LT2",
+      "nethpot": "HT3",
+      "uhc": "LT2"
+    },
+    "peakTiers": {
+      "sword": "LT2",
+      "nethpot": "HT3",
+      "uhc": "LT2"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "LT2",
+          "fecha": "2026-06-19T09:38:42.069Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-19T09:38:42.072Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "LT2",
+          "fecha": "2026-06-19T09:38:42.076Z"
+        }
+      ]
+    },
+    "fechaRegistro": "2026-06-19T09:37:40.550Z",
+    "tiersPuntuados": {
+      "sword": "LT2",
+      "nethpot": "HT3",
+      "uhc": "LT2"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 20,
+      "nethpot": 10,
+      "uhc": 20,
+      "total": 50
+    },
+    "tierGeneral": "Tier 3"
+  },
+  {
+    "id": "1781861934673",
+    "username": "Feerr_",
+    "uuid": "55d9ab60-1f11-4c86-bec3-5948b58931c2",
+    "region": "NA",
+    "skinHeadUrl": "/api/skin-head/Feerr_?size=160",
+    "tiers": {
+      "sword": null,
+      "nethpot": null,
+      "uhc": "LT3"
+    },
+    "peakTiers": {
+      "sword": null,
+      "nethpot": null,
+      "uhc": "LT3"
+    },
+    "historialTiers": {
+      "sword": [],
+      "nethpot": [],
+      "uhc": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-19T09:39:12.741Z"
+        }
+      ]
+    },
+    "fechaRegistro": "2026-06-19T09:38:54.673Z",
+    "tiersPuntuados": {
+      "sword": null,
+      "nethpot": null,
+      "uhc": "LT3"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 0,
+      "nethpot": 0,
+      "uhc": 6,
+      "total": 6
+    },
+    "tierGeneral": "Tier 5"
+  },
+  {
+    "id": "1781862019293",
+    "username": "SonOfEffect",
+    "uuid": "bc03737e-d748-412e-aa04-1efcb55de66f",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/SonOfEffect?size=160",
+    "tiers": {
+      "sword": "HT3",
+      "nethpot": "LT4",
+      "uhc": "HT4"
+    },
+    "peakTiers": {
+      "sword": "HT3",
+      "nethpot": "LT4",
+      "uhc": "HT4"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-19T09:40:58.115Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "LT4",
+          "fecha": "2026-06-19T09:40:58.125Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "HT4",
+          "fecha": "2026-06-19T09:40:58.130Z"
+        }
+      ]
+    },
+    "fechaRegistro": "2026-06-19T09:40:19.293Z",
+    "tiersPuntuados": {
+      "sword": "HT3",
+      "nethpot": "LT4",
+      "uhc": "HT4"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 10,
+      "nethpot": 3,
+      "uhc": 4,
+      "total": 17
+    },
+    "tierGeneral": "Tier 4"
+  },
+  {
+    "id": "1781862072195",
+    "username": "IVANOHACETRAP",
+    "uuid": "c8c9565c-f3d6-41c6-85d9-66832cb832dd",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/IVANOHACETRAP?size=160",
+    "tiers": {
+      "sword": "HT3",
+      "nethpot": "HT3",
+      "uhc": "HT3"
+    },
+    "peakTiers": {
+      "sword": "HT3",
+      "nethpot": "HT3",
+      "uhc": "LT2"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-24T18:37:56.866Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-24T18:38:39.170Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "LT4",
+          "fecha": "2026-06-24T18:37:56.876Z"
+        },
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-24T18:38:14.594Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-24T18:38:16.910Z"
+        },
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-24T18:38:24.053Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-24T18:38:39.185Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "LT4",
+          "fecha": "2026-06-19T09:41:34.831Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-24T18:38:14.598Z"
+        },
+        {
+          "tier": "LT2",
+          "fecha": "2026-06-24T18:38:21.284Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-06-24T18:38:39.190Z"
+        }
+      ]
+    },
+    "fechaRegistro": "2026-06-19T09:41:12.195Z",
+    "tiersPuntuados": {
+      "sword": "HT3",
+      "nethpot": "HT3",
+      "uhc": "HT3"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 10,
+      "nethpot": 10,
+      "uhc": 10,
+      "total": 30
+    },
+    "tierGeneral": "Tier 3"
+  },
+  {
+    "id": "1781862135005",
+    "username": "pepitoreydeltrap",
+    "uuid": "8c22de4c-b21f-4efd-a355-c1b539dd2897",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/pepitoreydeltrap?size=160",
+    "tiers": {
+      "sword": "LT3",
+      "nethpot": "LT4",
+      "uhc": "HT4"
+    },
+    "peakTiers": {
+      "sword": "LT3",
+      "nethpot": "LT4",
+      "uhc": "HT4"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-19T09:42:38.235Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "LT4",
+          "fecha": "2026-06-19T09:42:38.246Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "HT4",
+          "fecha": "2026-06-19T09:42:38.251Z"
+        }
+      ]
+    },
+    "fechaRegistro": "2026-06-19T09:42:15.005Z",
+    "tiersPuntuados": {
+      "sword": "LT3",
+      "nethpot": "LT4",
+      "uhc": "HT4"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 6,
+      "nethpot": 3,
+      "uhc": 4,
+      "total": 13
+    },
+    "tierGeneral": "Tier 4"
+  },
+  {
+    "id": "1781862269395",
+    "username": "xekaiiitzDM",
+    "uuid": "591e2f9b-e5d9-41bd-ae03-198996b345f1",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/xekaiiitzDM?size=160",
+    "tiers": {
+      "sword": "HT4",
+      "nethpot": "LT4",
+      "uhc": "LT4"
+    },
+    "peakTiers": {
+      "sword": "LT3",
+      "nethpot": "LT4",
+      "uhc": "LT4"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-19T09:44:50.405Z"
+        },
+        {
+          "tier": "HT4",
+          "fecha": "2026-07-20T19:24:12.514Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "LT4",
+          "fecha": "2026-06-19T09:44:50.416Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "LT4",
+          "fecha": "2026-06-19T09:44:50.421Z"
+        }
+      ]
+    },
+    "fechaRegistro": "2026-06-19T09:44:29.395Z",
+    "tiersPuntuados": {
+      "sword": "HT4",
+      "nethpot": "LT4",
+      "uhc": "LT4"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 4,
+      "nethpot": 3,
+      "uhc": 3,
+      "total": 10
+    },
+    "tierGeneral": "Tier 5"
+  },
+  {
+    "id": "1781862318031",
+    "username": "iJxss",
+    "uuid": "a2556c7d-4e7b-4745-820c-c516a94da8b6",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/iJxss?size=160",
+    "tiers": {
+      "sword": "LT3",
+      "nethpot": "LT3",
+      "uhc": null
+    },
+    "peakTiers": {
+      "sword": "LT3",
+      "nethpot": "LT3",
+      "uhc": null
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-19T09:45:47.456Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-19T09:45:47.466Z"
+        }
+      ],
+      "uhc": []
+    },
+    "fechaRegistro": "2026-06-19T09:45:18.032Z",
+    "tiersPuntuados": {
+      "sword": "LT3",
+      "nethpot": "LT3",
+      "uhc": null
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 6,
+      "nethpot": 6,
+      "uhc": 0,
+      "total": 12
+    },
+    "tierGeneral": "Tier 4"
+  },
+  {
+    "id": "1781862371317",
+    "username": "cerlitt",
+    "uuid": "1d80a3c8-7b66-4935-be79-6b6ff47cb925",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/cerlitt?size=160",
+    "tiers": {
+      "sword": "LT3",
+      "nethpot": "LT4",
+      "uhc": "HT4"
+    },
+    "peakTiers": {
+      "sword": "LT3",
+      "nethpot": "HT4",
+      "uhc": "HT4"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-06-19T09:46:31.279Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "HT4",
+          "fecha": "2026-06-19T09:46:31.291Z"
+        },
+        {
+          "tier": "LT4",
+          "fecha": "2026-06-19T09:46:44.711Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "HT4",
+          "fecha": "2026-06-19T09:46:31.297Z"
+        }
+      ]
+    },
+    "fechaRegistro": "2026-06-19T09:46:11.317Z",
+    "tiersPuntuados": {
+      "sword": "LT3",
+      "nethpot": "LT4",
+      "uhc": "HT4"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 6,
+      "nethpot": 3,
+      "uhc": 4,
+      "total": 13
+    },
+    "tierGeneral": "Tier 4"
+  },
+  {
+    "id": "1784575652229",
+    "username": "Ubeliique",
+    "uuid": "56f55e4d-f918-4e3d-be78-dcf7528edb4a",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/Ubeliique?size=160",
+    "tiers": {
+      "sword": "LT3",
+      "nethpot": null,
+      "uhc": null
+    },
+    "peakTiers": {
+      "sword": "HT3",
+      "nethpot": null,
+      "uhc": null
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "HT3",
+          "fecha": "2026-07-20T19:27:38.689Z"
+        },
+        {
+          "tier": "LT3",
+          "fecha": "2026-07-20T19:28:16.620Z"
+        }
+      ],
+      "nethpot": [],
+      "uhc": []
+    },
+    "fechaRegistro": "2026-07-20T19:27:32.229Z",
+    "tiersPuntuados": {
+      "sword": "LT3",
+      "nethpot": null,
+      "uhc": null
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 6,
+      "nethpot": 0,
+      "uhc": 0,
+      "total": 6
+    },
+    "tierGeneral": "Tier 5"
+  }
+]

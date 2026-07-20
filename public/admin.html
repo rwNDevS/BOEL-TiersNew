@@ -1,0 +1,3355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BOEL Tierlist | Admin</title>
+
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-soft: #0a0a0a;
+      --panel: #0d0f12;
+      --panel-2: #12151b;
+      --panel-3: #0f1722;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(214, 182, 69, 0.22);
+
+      --text: #f4f6f9;
+      --muted: #adb4bf;
+      --gold: #d6b645;
+      --gold-soft: #8d7423;
+      --blue-dark: #132033;
+      --shadow: 0 18px 48px rgba(0, 0, 0, 0.35);
+
+      --success: #8bcf8b;
+      --danger: #ff8080;
+      --warning: #e8c46a;
+
+      --lt1: #7d6616;
+      --ht1: #d9ba4a;
+      --lt2: #6c7280;
+      --ht2: #d3d9e2;
+      --lt3: #6f4525;
+      --ht3: #b67a45;
+      --lt4: #5a4277;
+      --ht4: #9b7fd4;
+      --lt5: #2d6b3a;
+      --ht5: #62c678;
+
+      --gt1: #d6b645;
+      --gt2: #b79231;
+      --gt3: #9a7822;
+      --gt4: #6e5418;
+      --gt5: #70757d;
+
+      --radius-xl: 22px;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 10px;
+      --max-width: 1360px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Inter, system-ui, Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #030303 0%, #07090d 45%, #040404 100%);
+      color: var(--text);
+      padding: 24px;
+    }
+
+    body.loading {
+      cursor: progress;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      background: linear-gradient(180deg, #0b0d10 0%, #090b0e 100%);
+      border: 1px solid var(--border-strong);
+      border-radius: var(--radius-xl);
+      padding: 18px 22px;
+      box-shadow: var(--shadow);
+      margin-bottom: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    .brand-logo-box {
+      width: 70px;
+      height: 70px;
+      border-radius: 16px;
+      background: #080808;
+      border: 1px solid rgba(214, 182, 69, 0.28);
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .brand-logo {
+      width: 54px;
+      height: 54px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .brand-text {
+      min-width: 0;
+    }
+
+    .brand-kicker {
+      display: block;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 11px;
+      font-weight: 900;
+      margin-bottom: 6px;
+    }
+
+    .brand-text h1 {
+      font-size: clamp(24px, 4vw, 42px);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 6px;
+      color: white;
+    }
+
+    .brand-text p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+      max-width: 760px;
+    }
+
+    .top-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      flex-shrink: 0;
+    }
+
+    a,
+    button {
+      text-decoration: none;
+      border: none;
+      outline: none;
+    }
+
+    .btn {
+      background: linear-gradient(180deg, #d6b645 0%, #a88424 100%);
+      color: #111;
+      border: 1px solid rgba(214, 182, 69, 0.55);
+      border-radius: 12px;
+      padding: 12px 14px;
+      font-size: 13px;
+      font-weight: 1000;
+      cursor: pointer;
+      transition: 0.15s ease;
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+
+    .btn:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+      transform: none;
+      filter: none;
+    }
+
+    .btn-secondary {
+      background: #0c1118;
+      color: white;
+      border: 1px solid var(--border);
+    }
+
+    .btn-danger {
+      background: #3a1116;
+      color: white;
+      border: 1px solid rgba(255, 128, 128, 0.25);
+    }
+
+    .btn-danger:hover {
+      background: #551a21;
+    }
+
+    .card {
+      background: linear-gradient(180deg, #0b0d10 0%, #10151d 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .card-header {
+      padding: 16px 18px;
+      border-bottom: 1px solid var(--border);
+      background: #0b1018;
+    }
+
+    .card-header h2 {
+      color: white;
+      font-size: 18px;
+      line-height: 1.1;
+      margin-bottom: 5px;
+    }
+
+    .card-header p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .card-body {
+      padding: 18px;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .field {
+      display: grid;
+      gap: 7px;
+      min-width: 0;
+    }
+
+    .field.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 900;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      background: #0b1018;
+      border: 1px solid var(--border);
+      color: white;
+      border-radius: 12px;
+      padding: 12px 13px;
+      font-size: 14px;
+      outline: none;
+      transition: 0.15s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: rgba(214, 182, 69, 0.35);
+      box-shadow: 0 0 0 3px rgba(214, 182, 69, 0.07);
+    }
+
+    input:disabled,
+    select:disabled,
+    textarea:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+
+    select option {
+      background: #0b1018;
+      color: white;
+    }
+
+    .message {
+      margin-top: 12px;
+      padding: 12px 13px;
+      border-radius: 12px;
+      font-size: 13px;
+      line-height: 1.4;
+      background: #0b1018;
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .message.ok {
+      color: #d9ffe1;
+      background: rgba(139, 207, 139, 0.08);
+      border-color: rgba(139, 207, 139, 0.25);
+    }
+
+    .message.error {
+      color: #ffdede;
+      background: rgba(255, 128, 128, 0.08);
+      border-color: rgba(255, 128, 128, 0.25);
+    }
+
+    .message.warn {
+      color: #fff2c4;
+      background: rgba(232, 196, 106, 0.08);
+      border-color: rgba(232, 196, 106, 0.25);
+    }
+
+    /* SESIÓN COMPACTA */
+    .session-card {
+      margin-bottom: 16px;
+    }
+
+    .session-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.8fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .login-inline {
+      display: grid;
+      grid-template-columns: minmax(160px, 1fr) minmax(180px, 1fr) auto;
+      gap: 10px;
+      align-items: end;
+    }
+
+    .session-box {
+      height: 100%;
+      background: #0b1018;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 13px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .session-box strong {
+      color: white;
+    }
+
+    .session-status {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+    }
+
+    .status-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #59606a;
+      flex-shrink: 0;
+    }
+
+    .status-dot.online {
+      background: var(--success);
+      box-shadow: 0 0 0 4px rgba(139, 207, 139, 0.1);
+    }
+
+    /* NAVEGACIÓN INTERNA */
+    .workspace-nav {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+      padding: 10px;
+      background: #0b0d10;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .workspace-tab {
+      background: #0b1018;
+      color: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 13px 15px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: 0.15s ease;
+    }
+
+    .workspace-tab:hover {
+      color: white;
+      border-color: rgba(214, 182, 69, 0.25);
+    }
+
+    .workspace-tab.active {
+      color: #111;
+      background: linear-gradient(180deg, #d6b645 0%, #a88424 100%);
+      border-color: rgba(214, 182, 69, 0.55);
+    }
+
+    .workspace-section {
+      display: none;
+    }
+
+    .workspace-section.active {
+      display: block;
+    }
+
+    /* JUGADORES */
+    .players-layout {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+      gap: 16px;
+      align-items: start;
+    }
+
+    .side-stack {
+      display: grid;
+      gap: 16px;
+      position: sticky;
+      top: 16px;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 150px 150px 145px;
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 14px;
+    }
+
+    .stat-card {
+      background: #0b1018;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .stat-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 900;
+      margin-bottom: 8px;
+    }
+
+    .stat-card strong {
+      display: block;
+      color: white;
+      font-size: 22px;
+    }
+
+    .players {
+      display: grid;
+      gap: 12px;
+    }
+
+    .player-card {
+      background: #0b0f15;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 16px;
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      gap: 14px;
+    }
+
+    .player-card.retired {
+      border-style: dashed;
+      border-color: rgba(173, 180, 191, 0.32);
+      background:
+        linear-gradient(180deg, rgba(14, 17, 22, 0.94), rgba(7, 9, 12, 0.98));
+    }
+
+    .player-card.retired .player-head {
+      filter: grayscale(0.58) brightness(0.82);
+    }
+
+    .retired-chip {
+      color: #d5dae2;
+      border-color: rgba(213, 218, 226, 0.3);
+      background: rgba(213, 218, 226, 0.07);
+    }
+
+    .retired-tier-text {
+      color: #d5dae2;
+      font-weight: 1000;
+    }
+
+    .btn-retire {
+      color: #f2cf74;
+      border-color: rgba(242, 207, 116, 0.28);
+      background: rgba(242, 207, 116, 0.07);
+    }
+
+    .btn-reinstate {
+      color: #82dda0;
+      border-color: rgba(130, 221, 160, 0.28);
+      background: rgba(130, 221, 160, 0.07);
+    }
+
+    .player-card:hover {
+      background: rgba(19, 32, 51, 0.28);
+    }
+
+    .player-head {
+      width: 54px;
+      height: 54px;
+      border-radius: 12px;
+      object-fit: cover;
+      image-rendering: pixelated;
+      border: 1px solid var(--border);
+      background: #0b1018;
+    }
+
+    .player-main {
+      min-width: 0;
+    }
+
+    .player-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .player-name {
+      color: white;
+      font-size: 18px;
+      font-weight: 1000;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .player-sub {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 4px;
+      word-break: break-word;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      justify-content: flex-end;
+    }
+
+    .chip {
+      background: #0b1018;
+      border: 1px solid var(--border);
+      color: #d4d9e0;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .tier-badge {
+      color: white;
+      padding: 7px 11px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 1000;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .tier-lt1 { background: var(--lt1); }
+    .tier-ht1 { background: var(--ht1); color: #101010; }
+    .tier-lt2 { background: var(--lt2); }
+    .tier-ht2 { background: var(--ht2); color: #101010; }
+    .tier-lt3 { background: var(--lt3); }
+    .tier-ht3 { background: var(--ht3); color: #101010; }
+    .tier-lt4 { background: var(--lt4); }
+    .tier-ht4 { background: var(--ht4); color: #101010; }
+    .tier-lt5 { background: var(--lt5); }
+    .tier-ht5 { background: var(--ht5); color: #101010; }
+
+    .general-tier-1 { background: var(--gt1); color: #101010; }
+    .general-tier-2 { background: var(--gt2); color: #111; }
+    .general-tier-3 { background: var(--gt3); color: #fff; }
+    .general-tier-4 { background: var(--gt4); color: #fff; }
+    .general-tier-5 { background: var(--gt5); color: #fff; }
+
+    .tier-empty {
+      background: #3f4650;
+      color: white;
+    }
+
+    .editor-grid {
+      display: grid;
+      grid-template-columns: minmax(170px, 1.25fr) 120px repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .editor-grid select {
+      padding: 10px 11px;
+      border-radius: 10px;
+      font-size: 13px;
+    }
+
+    .points-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 12px;
+    }
+
+    .row-actions {
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* TESTS */
+    .test-intro {
+      margin-bottom: 16px;
+    }
+
+    .test-intro .card-body {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .test-intro-text {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+      max-width: 820px;
+    }
+
+    .test-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      align-items: start;
+    }
+
+    .form-help {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+      padding: 11px 12px;
+      background: #0b1018;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .preview-box {
+      margin-top: 12px;
+      background: #0b1018;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 13px;
+    }
+
+    .preview-box span {
+      display: block;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 7px;
+    }
+
+    .preview-box strong {
+      color: white;
+      font-size: 14px;
+      line-height: 1.45;
+      display: block;
+    }
+
+    .empty {
+      padding: 30px 20px;
+      text-align: center;
+      color: var(--muted);
+      background: #0b1018;
+      border: 1px dashed var(--border);
+      border-radius: 16px;
+    }
+
+    .loading {
+      opacity: 0.75;
+      pointer-events: none;
+    }
+
+    .footer-note {
+      margin-top: 14px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 1080px) {
+      .players-layout,
+      .test-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .side-stack {
+        position: static;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .toolbar,
+      .editor-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      body {
+        padding: 16px;
+      }
+
+      .topbar {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .top-actions {
+        justify-content: flex-start;
+      }
+
+      .session-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .login-inline {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .login-inline .login-action {
+        grid-column: 1 / -1;
+      }
+
+      .player-card {
+        grid-template-columns: 1fr;
+      }
+
+      .player-top {
+        flex-direction: column;
+      }
+
+      .chips,
+      .row-actions {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .workspace-nav,
+      .stats,
+      .form-grid,
+      .side-stack {
+        grid-template-columns: 1fr;
+      }
+
+      .login-inline {
+        grid-template-columns: 1fr;
+      }
+
+      .login-inline .login-action {
+        grid-column: auto;
+      }
+
+      .session-box,
+      .test-intro .card-body {
+        align-items: stretch;
+        flex-direction: column;
+      }
+    }
+  
+    /* ================================================================
+       REDISEÑO 2026 · ACCESO BLOQUEADO Y PANEL UNIFICADO
+       ================================================================ */
+
+    :root {
+      --bg: #030405;
+      --bg-soft: #07090c;
+      --panel: #0b0e13;
+      --panel-2: #11161e;
+      --panel-3: #151c27;
+
+      --text: #f5f7fb;
+      --muted: #9ba4b3;
+      --border: rgba(255, 255, 255, 0.08);
+      --border-strong: rgba(218, 184, 73, 0.30);
+
+      --gold: #dab849;
+      --gold-soft: #7a5d17;
+      --gold-light: #f4d879;
+
+      --success: #58d58e;
+      --danger: #ff6876;
+      --warning: #efc765;
+
+      --lt1: #7d6616;
+      --ht1: #d9ba4a;
+      --lt2: #6c7280;
+      --ht2: #d3d9e2;
+      --lt3: #8a6732;
+      --ht3: #d4a764;
+      --lt4: #8a3434;
+      --ht4: #da5959;
+      --lt5: #484948;
+      --ht5: #818381;
+
+      --gt1: #f5d049;
+      --gt2: #b79231;
+      --gt3: #8b7336;
+      --gt4: #6e6143;
+      --gt5: #54575e;
+
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.48);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max-width: 1420px;
+    }
+
+    body {
+      padding: 0;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 50% -10%, rgba(218, 184, 73, 0.12), transparent 32%),
+        radial-gradient(circle at 8% 40%, rgba(78, 135, 217, 0.07), transparent 24%),
+        linear-gradient(180deg, #020303 0%, #06080b 42%, #030405 100%);
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      content: "";
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(to bottom, black, transparent 78%);
+    }
+
+    body::after {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      content: "";
+      pointer-events: none;
+      background:
+        linear-gradient(115deg, transparent 0 48%, rgba(218, 184, 73, 0.025) 48% 49%, transparent 49%),
+        linear-gradient(65deg, transparent 0 63%, rgba(255, 255, 255, 0.018) 63% 64%, transparent 64%);
+    }
+
+    .container {
+      width: min(var(--max-width), calc(100% - 36px));
+      max-width: none;
+      margin: 0 auto;
+      padding: 20px 0 32px;
+    }
+
+    body.auth-locked {
+      min-height: 100vh;
+    }
+
+    body.auth-locked .container {
+      width: 100%;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    body.auth-locked .topbar,
+    body.auth-locked .workspace-nav,
+    body.auth-locked .workspace-section,
+    body.auth-locked .footer-note {
+      display: none !important;
+    }
+
+    body.authenticated .session-card {
+      display: none !important;
+    }
+
+    /* LOGIN A PANTALLA COMPLETA */
+    .session-card {
+      width: min(930px, 100%);
+      min-height: 560px;
+      display: grid;
+      grid-template-columns: minmax(320px, 0.88fr) minmax(400px, 1.12fr);
+      margin: 0;
+      overflow: hidden;
+      border: 1px solid var(--border-strong);
+      border-radius: 30px;
+      background:
+        linear-gradient(180deg, rgba(17, 22, 30, 0.97), rgba(7, 9, 13, 0.99));
+      box-shadow: 0 35px 110px rgba(0, 0, 0, 0.66);
+    }
+
+    .login-visual {
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      flex-direction: column;
+      padding: 42px;
+      border-right: 1px solid var(--border);
+      background:
+        radial-gradient(circle at 50% 25%, rgba(218, 184, 73, 0.18), transparent 31%),
+        linear-gradient(155deg, rgba(218, 184, 73, 0.11), transparent 55%),
+        #080b10;
+    }
+
+    .login-visual::before,
+    .login-visual::after {
+      position: absolute;
+      content: "";
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .login-visual::before {
+      top: -135px;
+      right: -145px;
+      width: 390px;
+      height: 390px;
+      border: 1px solid rgba(218, 184, 73, 0.13);
+      box-shadow:
+        0 0 0 48px rgba(218, 184, 73, 0.018),
+        0 0 0 96px rgba(218, 184, 73, 0.01);
+    }
+
+    .login-visual::after {
+      left: -150px;
+      bottom: -210px;
+      width: 430px;
+      height: 430px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+    }
+
+    .login-emblem {
+      position: absolute;
+      top: 46px;
+      left: 42px;
+      width: 132px;
+      height: 132px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--border-strong);
+      border-radius: 50%;
+      background:
+        radial-gradient(circle, rgba(218, 184, 73, 0.12), transparent 63%),
+        #07090d;
+      box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.48),
+        0 0 0 16px rgba(218, 184, 73, 0.018);
+    }
+
+    .login-emblem img {
+      width: 78px;
+      height: 78px;
+      object-fit: contain;
+      filter: drop-shadow(0 12px 22px rgba(0, 0, 0, 0.52));
+    }
+
+    .login-visual-kicker,
+    .login-kicker {
+      position: relative;
+      z-index: 2;
+      display: block;
+      margin-bottom: 11px;
+      color: var(--gold-light);
+      font-size: 10px;
+      font-weight: 1000;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .login-visual > strong {
+      position: relative;
+      z-index: 2;
+      display: block;
+      max-width: 320px;
+      color: white;
+      font-size: 35px;
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+      text-transform: uppercase;
+    }
+
+    .login-visual > p {
+      position: relative;
+      z-index: 2;
+      max-width: 335px;
+      margin-top: 15px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .login-security {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 24px;
+      padding: 12px 13px;
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      color: #b7c0cc;
+      background: rgba(4, 7, 10, 0.66);
+      font-size: 10px;
+      line-height: 1.5;
+    }
+
+    .login-content {
+      min-width: 0;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      padding: 52px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(78, 135, 217, 0.05), transparent 32%),
+        linear-gradient(180deg, #0d1117, #080b10);
+    }
+
+    .login-content h1 {
+      color: white;
+      font-size: clamp(36px, 5vw, 55px);
+      line-height: 0.96;
+      letter-spacing: -0.052em;
+      text-transform: uppercase;
+    }
+
+    .login-description {
+      max-width: 500px;
+      margin: 15px 0 25px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .login-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .login-form label {
+      color: #dce1e8;
+      font-size: 10px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+    }
+
+    .login-form input {
+      min-height: 52px;
+      padding: 0 15px;
+      border-radius: 13px;
+      background: #06090d;
+    }
+
+    .login-form .login-action {
+      min-height: 52px;
+      margin-top: 3px;
+      font-size: 12px;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .login-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 19px;
+      padding-top: 17px;
+      border-top: 1px solid var(--border);
+    }
+
+    .login-links a {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      transition: 0.16s ease;
+    }
+
+    .login-links a:hover {
+      color: var(--gold-light);
+    }
+
+    /* ENCABEZADO AUTENTICADO */
+    .topbar {
+      position: relative;
+      margin: 0 0 16px;
+      padding: 17px 19px;
+      border-color: var(--border-strong);
+      border-radius: 24px;
+      background:
+        radial-gradient(circle at 90% 20%, rgba(218, 184, 73, 0.09), transparent 25%),
+        linear-gradient(180deg, rgba(17, 22, 30, 0.96), rgba(7, 9, 13, 0.98));
+      box-shadow: var(--shadow);
+    }
+
+    .brand-logo-box {
+      width: 58px;
+      height: 58px;
+      border-radius: 15px;
+    }
+
+    .brand-logo {
+      width: 45px;
+      height: 45px;
+    }
+
+    .brand-text h1 {
+      font-size: clamp(25px, 3.6vw, 40px);
+    }
+
+    .top-actions {
+      max-width: 720px;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .admin-quick-nav {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 7px;
+    }
+
+    .top-actions .btn {
+      min-height: 40px;
+      padding: 0 13px;
+      border-radius: 11px;
+      font-size: 10px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .sync-button {
+      color: var(--gold-light);
+      border-color: var(--border-strong);
+    }
+
+    .header-session {
+      min-width: 218px;
+      min-height: 48px;
+      padding: 7px 8px 7px 12px;
+      border-radius: 13px;
+      background: rgba(6, 9, 13, 0.78);
+    }
+
+    .header-session .session-status {
+      font-size: 10px;
+      line-height: 1.35;
+    }
+
+    .header-session .btn {
+      min-height: 33px;
+      padding: 0 10px;
+      font-size: 9px;
+    }
+
+    /* NAVEGACIÓN Y CONTENIDO */
+    .workspace-nav {
+      position: sticky;
+      top: 10px;
+      z-index: 30;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-bottom: 16px;
+      padding: 7px;
+      border-color: var(--border);
+      border-radius: 18px;
+      background: rgba(5, 8, 12, 0.82);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.38);
+    }
+
+    .workspace-tab {
+      min-height: 45px;
+      padding: 0 16px;
+      border-radius: 12px;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .workspace-tab.active {
+      background: linear-gradient(180deg, var(--gold-light), var(--gold));
+    }
+
+    .card {
+      border-radius: 20px;
+      background:
+        linear-gradient(180deg, rgba(17, 22, 30, 0.96), rgba(7, 9, 13, 0.99));
+      box-shadow: var(--shadow);
+    }
+
+    .card-header {
+      padding: 17px 19px;
+      background: rgba(6, 9, 13, 0.48);
+    }
+
+    .card-body {
+      padding: 19px;
+    }
+
+    input,
+    select {
+      min-height: 45px;
+      padding: 0 13px;
+      border-radius: 11px;
+      background: #070a0f;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: rgba(218, 184, 73, 0.40);
+      box-shadow: 0 0 0 3px rgba(218, 184, 73, 0.075);
+    }
+
+    .btn {
+      border-radius: 11px;
+      background: linear-gradient(180deg, var(--gold-light), #ba942f);
+    }
+
+    .btn-secondary {
+      background: #090d13;
+    }
+
+    .players-layout {
+      grid-template-columns: 300px minmax(0, 1fr);
+      gap: 16px;
+    }
+
+    .side-stack {
+      top: 82px;
+    }
+
+    .toolbar {
+      grid-template-columns: minmax(220px, 1fr) repeat(3, minmax(135px, 0.35fr));
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      background: #080c12;
+    }
+
+    .stats {
+      gap: 10px;
+    }
+
+    .stat-card {
+      padding: 15px;
+      border-radius: 14px;
+      background:
+        linear-gradient(180deg, #0d1219, #080b10);
+    }
+
+    .player-card {
+      grid-template-columns: 64px minmax(0, 1fr);
+      gap: 15px;
+      padding: 17px;
+      border-radius: 17px;
+      background:
+        linear-gradient(180deg, rgba(13, 17, 24, 0.96), rgba(7, 10, 14, 0.98));
+      transition: 0.16s ease;
+    }
+
+    .player-card:hover {
+      border-color: rgba(218, 184, 73, 0.20);
+      background:
+        linear-gradient(180deg, rgba(17, 23, 32, 0.98), rgba(8, 11, 16, 0.99));
+      transform: translateY(-1px);
+    }
+
+    .player-head {
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+    }
+
+    .player-name {
+      font-size: 20px;
+    }
+
+    .editor-grid {
+      grid-template-columns:
+        minmax(180px, 1.35fr)
+        minmax(105px, 0.48fr)
+        repeat(3, minmax(120px, 0.72fr));
+      gap: 9px;
+    }
+
+    .points-row .chip {
+      background: #070a0f;
+    }
+
+    .row-actions {
+      padding-top: 11px;
+      border-top: 1px solid var(--border);
+    }
+
+    .test-grid {
+      gap: 16px;
+    }
+
+    .preview-box,
+    .form-help,
+    .empty {
+      background: #070a0f;
+    }
+
+    .tier-badge {
+      border-color: color-mix(in srgb, currentColor 28%, transparent);
+      box-shadow:
+        inset 0 -4px 7px rgba(0, 0, 0, 0.18),
+        inset 0 1px 2px rgba(255, 255, 255, 0.10);
+    }
+
+    .footer-note {
+      margin: 18px 0 0;
+      padding-bottom: 4px;
+    }
+
+    @media (max-width: 1180px) {
+      .topbar {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .top-actions,
+      .admin-quick-nav {
+        max-width: none;
+        justify-content: flex-start;
+      }
+
+      .players-layout,
+      .test-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .side-stack {
+        position: static;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .editor-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .editor-grid .field:nth-child(n + 3) {
+        grid-column: auto;
+      }
+    }
+
+    @media (max-width: 820px) {
+      body.auth-locked .container {
+        padding: 12px;
+      }
+
+      .session-card {
+        min-height: 0;
+        grid-template-columns: 1fr;
+      }
+
+      .login-visual {
+        min-height: 270px;
+        padding: 30px;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+      }
+
+      .login-emblem {
+        top: 28px;
+        left: 30px;
+        width: 92px;
+        height: 92px;
+      }
+
+      .login-emblem img {
+        width: 57px;
+        height: 57px;
+      }
+
+      .login-visual > strong {
+        max-width: 460px;
+        font-size: 29px;
+      }
+
+      .login-content {
+        padding: 34px 28px;
+      }
+
+      .container {
+        width: min(100% - 22px, var(--max-width));
+        padding-top: 11px;
+      }
+
+      .workspace-nav {
+        top: 6px;
+        overflow-x: auto;
+        display: flex;
+        scrollbar-width: none;
+      }
+
+      .workspace-nav::-webkit-scrollbar {
+        display: none;
+      }
+
+      .workspace-tab {
+        min-width: 175px;
+        flex: 1 0 auto;
+      }
+
+      .toolbar,
+      .editor-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .player-card {
+        grid-template-columns: 1fr;
+      }
+
+      .player-head {
+        width: 70px;
+        height: 70px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .login-visual {
+        min-height: 235px;
+        padding: 24px;
+      }
+
+      .login-emblem {
+        top: 22px;
+        left: 24px;
+        width: 76px;
+        height: 76px;
+      }
+
+      .login-emblem img {
+        width: 47px;
+        height: 47px;
+      }
+
+      .login-visual > strong {
+        font-size: 24px;
+      }
+
+      .login-visual > p,
+      .login-security {
+        display: none;
+      }
+
+      .login-content {
+        padding: 28px 21px;
+      }
+
+      .login-content h1 {
+        font-size: 36px;
+      }
+
+      .top-actions,
+      .admin-quick-nav,
+      .header-session {
+        width: 100%;
+      }
+
+      .admin-quick-nav {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .header-session {
+        min-width: 0;
+      }
+
+      .stats,
+      .side-stack,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+  </style>
+</head>
+
+<body class="auth-locked">
+  <main class="container">
+    <section class="topbar">
+      <div class="brand">
+        <div class="brand-logo-box">
+          <img src="/boel.png" alt="Logo BOEL" class="brand-logo" />
+        </div>
+
+        <div class="brand-text">
+          <span class="brand-kicker">Centro de control • BOEL</span>
+          <h1>Panel Administrativo</h1>
+          <p>
+            Gestiona jugadores, retiros, tiers, resultados oficiales y configuración desde un solo lugar.
+          </p>
+        </div>
+      </div>
+
+      <div class="top-actions">
+        <nav class="admin-quick-nav" aria-label="Navegación del sitio">
+          <a class="btn btn-secondary" href="/">Inicio</a>
+          <a class="btn btn-secondary" href="/Tiers.html">Tiers</a>
+          <a class="btn btn-secondary" href="/results.html">Resultados</a>
+          <a class="btn btn-secondary" href="/simulink.html">Simulink</a>
+        </nav>
+
+        <button id="reloadBtn" class="btn btn-secondary sync-button" type="button">
+          Sincronizar
+        </button>
+
+        <div id="sessionBox" class="session-box header-session">
+          <div class="session-status">
+            <span class="status-dot"></span>
+            <div>
+              <strong>Sin sesión</strong><br />
+              Acceso bloqueado
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="loginGate" class="card session-card" aria-labelledby="loginTitle">
+      <div class="login-visual">
+        <div class="login-emblem">
+          <img
+            src="/boel.png"
+            alt="Emblema BOEL"
+            onerror="this.style.display='none'"
+          />
+        </div>
+
+        <span class="login-visual-kicker">Acceso restringido</span>
+        <strong>Centro de Control BOEL</strong>
+        <p>
+          Administración oficial de jugadores, tiers, retiros y resultados competitivos.
+        </p>
+
+        <div class="login-security">
+          <span class="status-dot online"></span>
+          Las herramientas permanecen ocultas hasta validar una cuenta administrativa.
+        </div>
+      </div>
+
+      <div class="login-content">
+        <span class="login-kicker">Identificación administrativa</span>
+        <h1 id="loginTitle">Iniciar sesión</h1>
+        <p class="login-description">
+          Introduce tus credenciales para desbloquear el panel. Ningún dato ni
+          herramienta administrativa se cargará antes de autenticarte.
+        </p>
+
+        <form id="loginForm" class="login-form">
+          <div class="field">
+            <label for="loginUser">Usuario</label>
+            <input
+              id="loginUser"
+              type="text"
+              placeholder="Usuario administrativo"
+              autocomplete="username"
+              autofocus
+              required
+            />
+          </div>
+
+          <div class="field">
+            <label for="loginPass">Contraseña</label>
+            <input
+              id="loginPass"
+              type="password"
+              placeholder="Contraseña"
+              autocomplete="current-password"
+              required
+            />
+          </div>
+
+          <button class="btn login-action" type="submit">
+            Desbloquear panel
+          </button>
+        </form>
+
+        <div id="loginMsg" aria-live="polite"></div>
+
+        <div class="login-links">
+          <a href="/">Volver al inicio</a>
+          <a href="/Tiers.html">Consultar tierlist</a>
+        </div>
+      </div>
+    </section>
+
+    <nav class="workspace-nav" aria-label="Secciones administrativas">
+      <button class="workspace-tab active" type="button" data-section="playersSection">
+        Jugadores y tiers
+      </button>
+
+      <button class="workspace-tab" type="button" data-section="testsSection">
+        Publicar tests
+      </button>
+
+      <button class="workspace-tab" type="button" data-section="settingsSection">
+        Configuración
+      </button>
+    </nav>
+
+    <section id="playersSection" class="workspace-section active">
+      <div class="players-layout">
+        <aside class="side-stack">
+          <article class="card">
+            <div class="card-header">
+              <h2>Registrar jugador</h2>
+              <p>Agrega una cuenta de Minecraft al ranking.</p>
+            </div>
+
+            <div class="card-body">
+              <form id="createPlayerForm" class="form">
+                <div class="field">
+                  <label for="mcUsername">Usuario de Minecraft</label>
+                  <input
+                    id="mcUsername"
+                    type="text"
+                    placeholder="Ej. wKoraii"
+                    maxlength="16"
+                    data-admin-control
+                    required
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="mcRegion">Región inicial</label>
+                  <select id="mcRegion" data-admin-control required>
+                    <option value="NA">NA</option>
+                    <option value="SA">SA</option>
+                    <option value="EU">EU</option>
+                  </select>
+                </div>
+
+                <button class="btn" type="submit" data-admin-control>
+                  Registrar jugador
+                </button>
+              </form>
+
+              <div id="createMsg"></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-header">
+              <h2>Flujo recomendado</h2>
+              <p>Orden sugerido para administrar la tierlist.</p>
+            </div>
+
+            <div class="card-body">
+              <div class="form-help">
+                1. Registra al jugador.<br />
+                2. Publica su test desde la sección de tests.<br />
+                3. El backend actualizará el tier automáticamente.<br />
+                4. Verifica el resultado en la página pública.
+              </div>
+            </div>
+          </article>
+        </aside>
+
+        <section class="card">
+          <div class="card-header">
+            <h2>Jugadores registrados</h2>
+            <p>Busca un jugador y modifica su nombre, región o tiers cuando sea necesario.</p>
+          </div>
+
+          <div class="card-body">
+            <section class="toolbar">
+              <input id="searchInput" type="text" placeholder="Buscar jugador..." />
+
+              <select id="regionFilter">
+                <option value="">Todas las regiones</option>
+                <option value="NA">NA</option>
+                <option value="SA">SA</option>
+                <option value="EU">EU</option>
+              </select>
+
+              <select id="statusFilter">
+                <option value="todos">Todos los estados</option>
+                <option value="activos">Solo activos</option>
+                <option value="retirados">Solo retirados</option>
+              </select>
+
+              <select id="sortSelect">
+                <option value="points">Más puntos</option>
+                <option value="name">Nombre A-Z</option>
+                <option value="region">Región</option>
+              </select>
+            </section>
+
+            <section class="stats">
+              <article class="stat-card">
+                <span>Total</span>
+                <strong id="statTotal">0</strong>
+              </article>
+
+              <article class="stat-card">
+                <span>Mostrados</span>
+                <strong id="statShown">0</strong>
+              </article>
+
+              <article class="stat-card">
+                <span>Estado</span>
+                <strong id="statStatus">—</strong>
+              </article>
+            </section>
+
+            <div id="globalMsg"></div>
+            <section id="playersList" class="players"></section>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="testsSection" class="workspace-section">
+      <article class="card test-intro">
+        <div class="card-body">
+          <div class="test-intro-text">
+            <strong style="color: white;">Publicación de resultados</strong><br />
+            Selecciona el tipo de test y completa sus datos. Al publicarlo, el servidor
+            guardará el resultado y aplicará los cambios de tier correspondientes.
+          </div>
+
+          <a class="btn btn-secondary" href="/results.html">Abrir resultados públicos</a>
+        </div>
+      </article>
+
+      <div class="test-grid">
+        <article class="card">
+          <div class="card-header">
+            <h2>Test normal</h2>
+            <p>Permite otorgar tiers desde LT5 hasta LT3.</p>
+          </div>
+
+          <div class="card-body">
+            <form id="normalTestForm" class="form">
+              <div class="form-grid">
+                <div class="field">
+                  <label for="normalTester">Tester</label>
+                  <input
+                    id="normalTester"
+                    type="text"
+                    list="playersDatalist"
+                    placeholder="Nombre del tester"
+                    data-admin-control
+                    required
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="normalTesteado">Testeado</label>
+                  <select id="normalTesteado" data-admin-control required>
+                    <option value="">Selecciona un jugador</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="normalGamemode">Modalidad</label>
+                  <select id="normalGamemode" data-admin-control required>
+                    <option value="sword">Sword</option>
+                    <option value="nethpot">NethPot</option>
+                    <option value="uhc">UHC</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="normalTier">Tier obtenido</label>
+                  <select id="normalTier" data-admin-control required></select>
+                </div>
+              </div>
+
+              <div class="form-help">
+                El tier anterior se obtiene automáticamente del perfil del jugador.
+              </div>
+
+              <div class="preview-box">
+                <span>Vista previa</span>
+                <strong id="normalPreview">Completa el formulario para revisar el registro.</strong>
+              </div>
+
+              <button class="btn" type="submit" data-admin-control>
+                Publicar test normal
+              </button>
+            </form>
+
+            <div id="normalTestMsg"></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h2>High Test</h2>
+            <p>Reto para jugadores de LT3 o tiers superiores.</p>
+          </div>
+
+          <div class="card-body">
+            <form id="highTestForm" class="form">
+              <div class="form-grid">
+                <div class="field">
+                  <label for="highGamemode">Modalidad</label>
+                  <select id="highGamemode" data-admin-control required>
+                    <option value="sword">Sword</option>
+                    <option value="nethpot">NethPot</option>
+                    <option value="uhc">UHC</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="highMarcador">Marcador</label>
+                  <input
+                    id="highMarcador"
+                    type="text"
+                    inputmode="numeric"
+                    placeholder="Ej. 8-7"
+                    pattern="\d{1,3}\s*[-:]\s*\d{1,3}"
+                    data-admin-control
+                    required
+                  />
+                </div>
+
+                <div class="field">
+                  <label for="highRetador">Retador</label>
+                  <select id="highRetador" data-admin-control required>
+                    <option value="">Selecciona al retador</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="highRetado">Retado</label>
+                  <select id="highRetado" data-admin-control required>
+                    <option value="">Selecciona al retado</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="highEval">Evaluación del retado</label>
+                  <select id="highEval" data-admin-control required>
+                    <option value="PASSED">Passed Eval</option>
+                    <option value="FAILED">Failed Eval</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="highResultado">Resultado del proceso</label>
+                  <select id="highResultado" data-admin-control required>
+                    <option value="PASSED">Passed</option>
+                    <option value="FAILED">Failed</option>
+                  </select>
+                </div>
+
+                <div class="field full">
+                  <label for="highDesenlace">Resultado del combate</label>
+                  <select id="highDesenlace" data-admin-control required>
+                    <option value="WON">Won</option>
+                    <option value="LOST">Lost</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-help">
+                El selector del retado solo muestra jugadores con LT3 o un tier superior
+                en la modalidad seleccionada. Una Failed Eval provoca la democión automática.
+                Passed/Failed y Won/Lost son datos independientes: puedes registrar, por ejemplo,
+                un test Passed aunque el retador haya perdido el combate.
+              </div>
+
+              <div class="preview-box">
+                <span>Vista previa</span>
+                <strong id="highPreview">Completa el formulario para revisar el registro.</strong>
+              </div>
+
+              <button class="btn" type="submit" data-admin-control>
+                Publicar High Test
+              </button>
+            </form>
+
+            <div id="highTestMsg"></div>
+          </div>
+        </article>
+      </div>
+
+      <datalist id="playersDatalist"></datalist>
+    </section>
+
+    <section id="settingsSection" class="workspace-section">
+      <div class="test-grid">
+        <article class="card">
+          <div class="card-header">
+            <h2>Puntos por Peak Tier</h2>
+            <p>Decide qué tier se utilizará para calcular los puntos del ranking.</p>
+          </div>
+
+          <div class="card-body">
+            <form id="peakSettingsForm" class="form">
+              <div class="field">
+                <label for="peakPointsMode">Fuente de los puntos</label>
+                <select id="peakPointsMode" data-admin-control required>
+                  <option value="current">Usar tier actual</option>
+                  <option value="peak">Usar Peak Tier</option>
+                </select>
+              </div>
+
+              <div class="form-help">
+                <strong style="color: white;">Tier actual:</strong>
+                si el jugador baja, también bajan sus puntos.<br /><br />
+
+                <strong style="color: white;">Peak Tier:</strong>
+                se sigue mostrando el tier actual, pero los puntos se calculan
+                con el mejor tier histórico obtenido en cada modalidad.
+              </div>
+
+              <div class="preview-box">
+                <span>Estado actual</span>
+                <strong id="peakSettingsStatus">Cargando configuración...</strong>
+              </div>
+
+              <button class="btn" type="submit" data-admin-control>
+                Guardar configuración
+              </button>
+            </form>
+
+            <div id="peakSettingsMsg"></div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-header">
+            <h2>Cómo funciona el Peak Tier</h2>
+            <p>El mejor tier queda almacenado aunque el jugador sea demoteado.</p>
+          </div>
+
+          <div class="card-body">
+            <div class="form-help">
+              • El tier visible y editable siempre es el tier actual.<br /><br />
+              • El Peak Tier solo puede mejorar; nunca se reduce automáticamente.<br /><br />
+              • Al activar Peak Tier, el ranking general se recalcula de inmediato.<br /><br />
+              • Los tests normales, High Tests y cambios manuales actualizan el peak.<br /><br />
+              • Desactivar la opción no borra los peaks guardados; únicamente vuelve
+              a calcular los puntos con el tier actual.
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <p class="footer-note">
+      BOEL Tierlist · Panel conectado al backend del sistema.
+    </p>
+  </main>
+
+  <script>
+    const API_BASE = "/api";
+
+    const FALLBACK_NORMAL_TIERS = ["LT5", "HT5", "LT4", "HT4", "LT3"];
+    const FALLBACK_HIGH_TIERS = ["LT3", "HT3", "LT2", "HT2", "LT1", "HT1"];
+
+    const GAMEMODE_LABELS = {
+      sword: "Sword",
+      nethpot: "NethPot",
+      uhc: "UHC"
+    };
+
+    const state = {
+      auth: null,
+      config: null,
+      players: [],
+      search: "",
+      region: "",
+      status: "todos",
+      sort: "points",
+      usarPeakTierParaPuntos: false
+    };
+
+    const els = {
+      loginForm: document.getElementById("loginForm"),
+      loginUser: document.getElementById("loginUser"),
+      loginPass: document.getElementById("loginPass"),
+      loginMsg: document.getElementById("loginMsg"),
+      sessionBox: document.getElementById("sessionBox"),
+
+      createPlayerForm: document.getElementById("createPlayerForm"),
+      mcUsername: document.getElementById("mcUsername"),
+      mcRegion: document.getElementById("mcRegion"),
+      createMsg: document.getElementById("createMsg"),
+
+      searchInput: document.getElementById("searchInput"),
+      regionFilter: document.getElementById("regionFilter"),
+      statusFilter: document.getElementById("statusFilter"),
+      sortSelect: document.getElementById("sortSelect"),
+      reloadBtn: document.getElementById("reloadBtn"),
+
+      statTotal: document.getElementById("statTotal"),
+      statShown: document.getElementById("statShown"),
+      statStatus: document.getElementById("statStatus"),
+
+      globalMsg: document.getElementById("globalMsg"),
+      playersList: document.getElementById("playersList"),
+
+      normalTestForm: document.getElementById("normalTestForm"),
+      normalTester: document.getElementById("normalTester"),
+      normalTesteado: document.getElementById("normalTesteado"),
+      normalGamemode: document.getElementById("normalGamemode"),
+      normalTier: document.getElementById("normalTier"),
+      normalPreview: document.getElementById("normalPreview"),
+      normalTestMsg: document.getElementById("normalTestMsg"),
+
+      highTestForm: document.getElementById("highTestForm"),
+      highGamemode: document.getElementById("highGamemode"),
+      highMarcador: document.getElementById("highMarcador"),
+      highRetador: document.getElementById("highRetador"),
+      highRetado: document.getElementById("highRetado"),
+      highEval: document.getElementById("highEval"),
+      highResultado: document.getElementById("highResultado"),
+      highDesenlace: document.getElementById("highDesenlace"),
+      highPreview: document.getElementById("highPreview"),
+      highTestMsg: document.getElementById("highTestMsg"),
+
+      peakSettingsForm: document.getElementById("peakSettingsForm"),
+      peakPointsMode: document.getElementById("peakPointsMode"),
+      peakSettingsStatus: document.getElementById("peakSettingsStatus"),
+      peakSettingsMsg: document.getElementById("peakSettingsMsg"),
+
+      playersDatalist: document.getElementById("playersDatalist"),
+      workspaceTabs: [...document.querySelectorAll(".workspace-tab")],
+      workspaceSections: [...document.querySelectorAll(".workspace-section")],
+      adminControls: [...document.querySelectorAll("[data-admin-control]")]
+    };
+
+    function authHeaders() {
+      if (!state.auth) {
+        return { "Content-Type": "application/json" };
+      }
+
+      return {
+        "Content-Type": "application/json",
+        "x-admin-usuario": state.auth.usuario,
+        "x-admin-password": state.auth.password
+      };
+    }
+
+    async function fetchJSON(url, options = {}) {
+      const response = await fetch(url, options);
+      const text = await response.text();
+
+      let data = null;
+
+      try {
+        data = text ? JSON.parse(text) : null;
+      } catch {
+        data = { error: text };
+      }
+
+      if (!response.ok) {
+        throw new Error(
+          data?.error ||
+          data?.message ||
+          `Error HTTP ${response.status}`
+        );
+      }
+
+      return data;
+    }
+
+    function setLoading(value) {
+      document.body.classList.toggle("loading", value);
+    }
+
+    function setMsg(element, type, text) {
+      if (!text) {
+        element.innerHTML = "";
+        return;
+      }
+
+      element.innerHTML = `
+        <div class="message ${type}">
+          ${escapeHTML(text)}
+        </div>
+      `;
+    }
+
+    function isAdmin() {
+      return Boolean(state.auth && state.auth.rol === "admin");
+    }
+
+    function applyAdminState() {
+      const enabled = isAdmin();
+
+      document.body.classList.toggle("auth-locked", !enabled);
+      document.body.classList.toggle("authenticated", enabled);
+
+      els.adminControls.forEach(control => {
+        control.disabled = !enabled;
+      });
+
+      els.reloadBtn.disabled = !enabled;
+
+      if (!enabled) {
+        els.playersList.innerHTML = "";
+        els.statTotal.textContent = "0";
+        els.statShown.textContent = "0";
+        els.statStatus.textContent = "Bloqueado";
+        return;
+      }
+
+      renderPlayers();
+      updateNormalPreview();
+      updateHighPreview();
+      renderPeakSettings();
+    }
+
+    async function loadConfig() {
+      state.config = await fetchJSON(`${API_BASE}/config`);
+
+      state.usarPeakTierParaPuntos = Boolean(
+        state.config?.ajustes?.usarPeakTierParaPuntos
+      );
+
+      populateNormalTierOptions();
+      renderPeakSettings();
+    }
+
+    async function loadPlayers() {
+      try {
+        setLoading(true);
+
+        state.players = await fetchJSON(
+          `${API_BASE}/players?estado=todos`
+        );
+
+        els.statStatus.textContent = "Online";
+        setMsg(els.globalMsg, "", "");
+
+        renderPlayers();
+        populatePlayerSelectors();
+      } catch (error) {
+        els.statStatus.textContent = "Error";
+        setMsg(
+          els.globalMsg,
+          "error",
+          `No se pudieron cargar los jugadores: ${error.message}`
+        );
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    async function login(username, password) {
+      const account = await fetchJSON(`${API_BASE}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
+
+      if (account.rol !== "admin") {
+        state.auth = null;
+        renderSession();
+        throw new Error(
+          "La cuenta es válida, pero no tiene permisos de administrador."
+        );
+      }
+
+      state.auth = {
+        usuario: account.usuario,
+        rol: account.rol,
+        fotoPerfil: account.fotoPerfil,
+        descripcion: account.descripcion,
+        password
+      };
+
+      renderSession();
+    }
+
+    function logout() {
+      state.auth = null;
+      state.config = null;
+      state.players = [];
+      state.search = "";
+      state.region = "";
+      state.status = "todos";
+      state.sort = "points";
+
+      els.loginPass.value = "";
+      els.searchInput.value = "";
+      els.regionFilter.value = "";
+      els.statusFilter.value = "todos";
+      els.sortSelect.value = "points";
+
+      switchWorkspace("playersSection");
+      renderSession();
+      setMsg(
+        els.loginMsg,
+        "warn",
+        "Sesión cerrada. El panel volvió a quedar bloqueado."
+      );
+
+      requestAnimationFrame(() => {
+        els.loginUser.focus();
+      });
+    }
+
+    function renderSession() {
+      if (!state.auth) {
+        els.sessionBox.innerHTML = `
+          <div class="session-status">
+            <span class="status-dot"></span>
+            <div>
+              <strong>Sin sesión</strong><br />
+              Panel bloqueado
+            </div>
+          </div>
+        `;
+
+        applyAdminState();
+        return;
+      }
+
+      els.sessionBox.innerHTML = `
+        <div class="session-status">
+          <span class="status-dot ${isAdmin() ? "online" : ""}"></span>
+          <div>
+            <strong>${escapeHTML(state.auth.usuario)}</strong><br />
+            Rol: ${escapeHTML(state.auth.rol)}
+          </div>
+        </div>
+
+        <button class="btn btn-secondary" type="button" onclick="logout()">
+          Cerrar sesión
+        </button>
+      `;
+
+      applyAdminState();
+    }
+
+    async function createPlayer(username, region) {
+      requireAdmin();
+
+      return fetchJSON(`${API_BASE}/players`, {
+        method: "POST",
+        headers: authHeaders(),
+        body: JSON.stringify({ username, region })
+      });
+    }
+
+    async function updatePlayerData(player, changes) {
+      requireAdmin();
+
+      return fetchJSON(`${API_BASE}/players/${player.id}`, {
+        method: "PATCH",
+        headers: authHeaders(),
+        body: JSON.stringify(changes)
+      });
+    }
+
+    async function updatePlayerTier(player, gamemode, tier) {
+      requireAdmin();
+
+      return fetchJSON(`${API_BASE}/players/${player.id}/tier`, {
+        method: "PATCH",
+        headers: authHeaders(),
+        body: JSON.stringify({
+          gamemode,
+          tier: tier || null
+        })
+      });
+    }
+
+    async function updatePlayerRetirement(player, retirado) {
+      requireAdmin();
+
+      return fetchJSON(`${API_BASE}/players/${player.id}/retirement`, {
+        method: "PATCH",
+        headers: authHeaders(),
+        body: JSON.stringify({ retirado })
+      });
+    }
+
+    async function deletePlayer(player) {
+      requireAdmin();
+
+      return fetchJSON(`${API_BASE}/players/${player.id}`, {
+        method: "DELETE",
+        headers: authHeaders()
+      });
+    }
+
+    async function publishNormalTest(payload) {
+      requireAdmin();
+
+      return fetchJSON(`${API_BASE}/tests/normal`, {
+        method: "POST",
+        headers: authHeaders(),
+        body: JSON.stringify(payload)
+      });
+    }
+
+    async function publishHighTest(payload) {
+      requireAdmin();
+
+      return fetchJSON(`${API_BASE}/tests/high`, {
+        method: "POST",
+        headers: authHeaders(),
+        body: JSON.stringify(payload)
+      });
+    }
+
+    async function updatePeakPointsSetting(enabled) {
+      requireAdmin();
+
+      return fetchJSON(`${API_BASE}/settings/peak-tier-points`, {
+        method: "PATCH",
+        headers: authHeaders(),
+        body: JSON.stringify({ enabled })
+      });
+    }
+
+    function renderPeakSettings() {
+      const enabled = Boolean(state.usarPeakTierParaPuntos);
+
+      els.peakPointsMode.value = enabled
+        ? "peak"
+        : "current";
+
+      els.peakSettingsStatus.textContent = enabled
+        ? "Activo: los puntos usan el Peak Tier."
+        : "Desactivado: los puntos usan el tier actual.";
+    }
+
+    function requireAdmin() {
+      if (!isAdmin()) {
+        throw new Error("Necesitas iniciar sesión como administrador.");
+      }
+    }
+
+    function getFilteredPlayers() {
+      const query = state.search.trim().toLowerCase();
+      let list = [...state.players];
+
+      if (query) {
+        list = list.filter(player =>
+          String(player.username || "")
+            .toLowerCase()
+            .includes(query)
+        );
+      }
+
+      if (state.region) {
+        list = list.filter(player =>
+          String(player.region || "").toUpperCase() === state.region
+        );
+      }
+
+      if (state.status === "activos") {
+        list = list.filter(player => !player.retirado);
+      }
+
+      if (state.status === "retirados") {
+        list = list.filter(player => Boolean(player.retirado));
+      }
+
+      if (state.sort === "points") {
+        list.sort((a, b) =>
+          (b.puntos?.total || 0) -
+          (a.puntos?.total || 0) ||
+          String(a.username).localeCompare(String(b.username))
+        );
+      }
+
+      if (state.sort === "name") {
+        list.sort((a, b) =>
+          String(a.username).localeCompare(String(b.username))
+        );
+      }
+
+      if (state.sort === "region") {
+        list.sort((a, b) =>
+          String(a.region).localeCompare(String(b.region)) ||
+          String(a.username).localeCompare(String(b.username))
+        );
+      }
+
+      return list;
+    }
+
+    function renderPlayers() {
+      const list = getFilteredPlayers();
+
+      els.statTotal.textContent = state.players.length;
+      els.statShown.textContent = list.length;
+
+      if (list.length === 0) {
+        els.playersList.innerHTML = `
+          <div class="empty">
+            No hay jugadores registrados o no coinciden con el filtro.
+          </div>
+        `;
+
+        return;
+      }
+
+      els.playersList.innerHTML = list
+        .map(player => renderPlayerCard(player))
+        .join("");
+    }
+
+    function renderPlayerCard(player) {
+      const points = player.puntos || {};
+      const tiers = player.tiers || {};
+      const peaks = player.peakTiers || {};
+      const retired = Boolean(player.retirado);
+      const tierGeneral = retired
+        ? "RET"
+        : (player.tierGeneral || "Tier 5");
+
+      const fuentePuntos = retired
+        ? "Retirado"
+        : player.fuentePuntos === "PEAK_TIER"
+          ? "Peak Tier"
+          : "Tier actual";
+
+      const displayTier = tier =>
+        retired && tier
+          ? `R${tier}`
+          : (tier || "—");
+
+      return `
+        <article class="player-card ${retired ? "retired" : ""}" data-player-id="${escapeHTML(player.id)}">
+          <img
+            class="player-head"
+            src="${getHeadUrl(player)}"
+            alt="Skin de ${escapeHTML(player.username)}"
+            onerror="this.src='https://mc-heads.net/avatar/Steve/160'"
+          />
+
+          <div class="player-main">
+            <div class="player-top">
+              <div>
+                <div class="player-name">${escapeHTML(player.username)}</div>
+                <div class="player-sub">
+                  ID: ${escapeHTML(player.id)} ·
+                  UUID: ${escapeHTML(player.uuid || "sin confirmar")}
+                  ${retired && player.fechaRetiro
+                    ? ` · Retirado: ${escapeHTML(new Date(player.fechaRetiro).toLocaleDateString("es-MX"))}`
+                    : ""
+                  }
+                </div>
+              </div>
+
+              <div class="chips">
+                <span class="chip">${escapeHTML(player.region || "—")}</span>
+                ${retired
+                  ? `<span class="chip retired-chip">RET</span>`
+                  : `<span class="tier-badge ${getTierClass(tierGeneral, true)}">${escapeHTML(tierGeneral)}</span>`
+                }
+                <span class="chip">${points.total || 0} pts</span>
+              </div>
+            </div>
+
+            <div class="editor-grid">
+              ${renderUsernameInput(player.id, player.username)}
+              ${renderRegionSelect(player.id, player.region)}
+              ${renderTierSelect(player.id, "sword", "Sword", tiers.sword, retired)}
+              ${renderTierSelect(player.id, "nethpot", "NethPot", tiers.nethpot, retired)}
+              ${renderTierSelect(player.id, "uhc", "UHC", tiers.uhc, retired)}
+            </div>
+
+            <div class="points-row">
+              <span class="chip">Estado: ${retired ? "Retirado" : "Activo"}</span>
+              <span class="chip">Puntos desde: ${escapeHTML(fuentePuntos)}</span>
+              <span class="chip ${retired ? "retired-tier-text" : ""}">
+                Sword: actual ${escapeHTML(displayTier(tiers.sword))} ·
+                peak ${escapeHTML(peaks.sword || "—")} ·
+                ${points.sword || 0} pts
+              </span>
+              <span class="chip ${retired ? "retired-tier-text" : ""}">
+                NethPot: actual ${escapeHTML(displayTier(tiers.nethpot))} ·
+                peak ${escapeHTML(peaks.nethpot || "—")} ·
+                ${points.nethpot || 0} pts
+              </span>
+              <span class="chip ${retired ? "retired-tier-text" : ""}">
+                UHC: actual ${escapeHTML(displayTier(tiers.uhc))} ·
+                peak ${escapeHTML(peaks.uhc || "—")} ·
+                ${points.uhc || 0} pts
+              </span>
+            </div>
+
+            <div class="row-actions">
+              <button
+                class="btn"
+                type="button"
+                onclick="handleSavePlayer('${escapeJS(player.id)}')"
+                ${isAdmin() ? "" : "disabled"}
+              >
+                Guardar cambios
+              </button>
+
+              <button
+                class="btn ${retired ? "btn-reinstate" : "btn-retire"}"
+                type="button"
+                onclick="handleRetirement('${escapeJS(player.id)}')"
+                ${isAdmin() ? "" : "disabled"}
+              >
+                ${retired ? "Reintegrar y reiniciar" : "Retirar"}
+              </button>
+
+              <button
+                class="btn btn-danger"
+                type="button"
+                onclick="handleDeletePlayer('${escapeJS(player.id)}')"
+                ${isAdmin() ? "" : "disabled"}
+              >
+                Eliminar
+              </button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function renderUsernameInput(playerId, username) {
+      return `
+        <div class="field">
+          <label>Nombre de usuario</label>
+          <input
+            type="text"
+            value="${escapeHTML(username || "")}"
+            maxlength="16"
+            pattern="[A-Za-z0-9_]{1,16}"
+            autocomplete="off"
+            data-player-id="${escapeHTML(playerId)}"
+            data-username-input="true"
+            ${isAdmin() ? "" : "disabled"}
+          />
+        </div>
+      `;
+    }
+
+    function renderRegionSelect(playerId, selectedRegion) {
+      const regiones = state.config?.regiones || ["NA", "SA", "EU"];
+
+      return `
+        <div class="field">
+          <label>Región</label>
+          <select
+            data-player-id="${escapeHTML(playerId)}"
+            data-region-select="true"
+            ${isAdmin() ? "" : "disabled"}
+          >
+            ${regiones.map(region => `
+              <option
+                value="${region}"
+                ${selectedRegion === region ? "selected" : ""}
+              >
+                ${region}
+              </option>
+            `).join("")}
+          </select>
+        </div>
+      `;
+    }
+
+    function renderTierSelect(playerId, mode, label, selectedTier, retired = false) {
+      const tiers =
+        state.config?.tiersOrden ||
+        ["HT1", "LT1", "HT2", "LT2", "HT3", "LT3", "HT4", "LT4", "HT5", "LT5"];
+
+      return `
+        <div class="field">
+          <label>${label}${retired ? " · retirado" : ""}</label>
+          <select
+            data-player-id="${escapeHTML(playerId)}"
+            data-tier-mode="${mode}"
+            ${isAdmin() && !retired ? "" : "disabled"}
+          >
+            <option value="">Sin tier</option>
+
+            ${tiers.map(tier => `
+              <option
+                value="${tier}"
+                ${selectedTier === tier ? "selected" : ""}
+              >
+                ${retired ? `R${tier}` : tier}
+              </option>
+            `).join("")}
+          </select>
+        </div>
+      `;
+    }
+
+    async function handleSavePlayer(playerId) {
+      const player = state.players.find(item => item.id === playerId);
+      if (!player) return;
+
+      const card = document.querySelector(
+        `[data-player-id="${CSS.escape(playerId)}"]`
+      );
+
+      const usernameInput = card.querySelector("input[data-username-input]");
+      const regionSelect = card.querySelector("select[data-region-select]");
+      const tierSelects = card.querySelectorAll("select[data-tier-mode]");
+
+      const newUsername = usernameInput.value.trim();
+      const newRegion = regionSelect.value;
+      const newTiers = {};
+
+      if (!/^[A-Za-z0-9_]{1,16}$/.test(newUsername)) {
+        setMsg(
+          els.globalMsg,
+          "error",
+          "El nombre debe tener de 1 a 16 caracteres y usar solo letras, números o guion bajo."
+        );
+        usernameInput.focus();
+        return;
+      }
+
+      const duplicatedUsername = state.players.some(item =>
+        item.id !== player.id &&
+        String(item.username || "").toLowerCase() === newUsername.toLowerCase()
+      );
+
+      if (duplicatedUsername) {
+        setMsg(
+          els.globalMsg,
+          "error",
+          `Ya existe un jugador registrado con el nombre ${newUsername}.`
+        );
+        usernameInput.focus();
+        return;
+      }
+
+      tierSelects.forEach(select => {
+        newTiers[select.dataset.tierMode] = select.value || null;
+      });
+
+      const changes = [];
+
+      try {
+        setLoading(true);
+
+        const profileChanges = {};
+        const usernameChanged = (player.username || "") !== newUsername;
+        const regionChanged = (player.region || "") !== newRegion;
+
+        if (usernameChanged) {
+          profileChanges.username = newUsername;
+          changes.push("nombre");
+        }
+
+        if (regionChanged) {
+          profileChanges.region = newRegion;
+          changes.push("región");
+        }
+
+        if (Object.keys(profileChanges).length > 0) {
+          await updatePlayerData(player, profileChanges);
+        }
+
+        for (const mode of ["sword", "nethpot", "uhc"]) {
+          const oldTier = player.tiers?.[mode] || null;
+          const newTier = newTiers[mode] || null;
+
+          if (oldTier !== newTier) {
+            await updatePlayerTier(player, mode, newTier);
+            changes.push(mode);
+          }
+        }
+
+        if (changes.length === 0) {
+          setMsg(
+            els.globalMsg,
+            "warn",
+            "No hiciste ningún cambio."
+          );
+
+          return;
+        }
+
+        setMsg(
+          els.globalMsg,
+          "ok",
+          `Cambios guardados para ${newUsername}: ${changes.join(", ")}.`
+        );
+
+        await loadPlayers();
+      } catch (error) {
+        setMsg(els.globalMsg, "error", error.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    async function handleRetirement(playerId) {
+      const player = state.players.find(item => item.id === playerId);
+      if (!player) return;
+
+      const willRetire = !player.retirado;
+      const message = willRetire
+        ? `¿Retirar a ${player.username}? Dejará de aparecer en los rankings activos, sus tiers se mostrarán con R y su Tier General será RET.`
+        : `¿Reintegrar a ${player.username}? Sus tiers actuales, Peak Tiers e historial de tiers se borrarán y comenzará desde 0 para retestearse.`;
+
+      if (!confirm(message)) return;
+
+      try {
+        setLoading(true);
+
+        await updatePlayerRetirement(player, willRetire);
+
+        setMsg(
+          els.globalMsg,
+          "ok",
+          willRetire
+            ? `${player.username} fue retirado correctamente.`
+            : `${player.username} fue reintegrado desde cero y deberá retestearse.`
+        );
+
+        await loadPlayers();
+      } catch (error) {
+        setMsg(els.globalMsg, "error", error.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    async function handleDeletePlayer(playerId) {
+      const player = state.players.find(item => item.id === playerId);
+      if (!player) return;
+
+      const confirmed = confirm(
+        `¿Seguro que quieres eliminar a ${player.username}?`
+      );
+
+      if (!confirmed) return;
+
+      try {
+        setLoading(true);
+        await deletePlayer(player);
+
+        setMsg(
+          els.globalMsg,
+          "ok",
+          `${player.username} fue eliminado correctamente.`
+        );
+
+        await loadPlayers();
+      } catch (error) {
+        setMsg(els.globalMsg, "error", error.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    function populateNormalTierOptions() {
+      const tiers =
+        state.config?.tests?.tiersNormal ||
+        FALLBACK_NORMAL_TIERS;
+
+      const selected = els.normalTier.value;
+
+      els.normalTier.innerHTML = tiers
+        .map(tier => `
+          <option value="${escapeHTML(tier)}">
+            ${escapeHTML(tier)}
+          </option>
+        `)
+        .join("");
+
+      if (tiers.includes(selected)) {
+        els.normalTier.value = selected;
+      }
+
+      updateNormalPreview();
+    }
+
+    function populatePlayerSelectors() {
+      const sortedPlayers = state.players
+        .filter(player => !player.retirado)
+        .sort((a, b) =>
+          String(a.username).localeCompare(String(b.username))
+        );
+
+      els.playersDatalist.innerHTML = sortedPlayers
+        .map(player => `
+          <option value="${escapeHTML(player.username)}"></option>
+        `)
+        .join("");
+
+      fillPlayerSelect(
+        els.normalTesteado,
+        sortedPlayers,
+        "Selecciona un jugador"
+      );
+
+      fillPlayerSelect(
+        els.highRetador,
+        sortedPlayers,
+        "Selecciona al retador"
+      );
+
+      populateEligibleRetados();
+      updateNormalPreview();
+      updateHighPreview();
+    }
+
+    function fillPlayerSelect(select, players, placeholder) {
+      const previous = select.value;
+
+      select.innerHTML = `
+        <option value="">${escapeHTML(placeholder)}</option>
+
+        ${players.map(player => `
+          <option value="${escapeHTML(player.username)}">
+            ${escapeHTML(player.username)}
+          </option>
+        `).join("")}
+      `;
+
+      if (players.some(player => player.username === previous)) {
+        select.value = previous;
+      }
+    }
+
+    function populateEligibleRetados() {
+      const gamemode = els.highGamemode.value;
+
+      const allowedTiers =
+        state.config?.tests?.tiersHigh ||
+        FALLBACK_HIGH_TIERS;
+
+      const previous = els.highRetado.value;
+
+      const eligible = [...state.players]
+        .filter(player =>
+          !player.retirado &&
+          allowedTiers.includes(player.tiers?.[gamemode] || "")
+        )
+        .sort((a, b) =>
+          String(a.username).localeCompare(String(b.username))
+        );
+
+      els.highRetado.innerHTML = `
+        <option value="">Selecciona al retado</option>
+
+        ${eligible.map(player => `
+          <option value="${escapeHTML(player.username)}">
+            ${escapeHTML(player.username)} ·
+            ${escapeHTML(player.tiers?.[gamemode] || "Sin tier")}
+          </option>
+        `).join("")}
+      `;
+
+      if (eligible.some(player => player.username === previous)) {
+        els.highRetado.value = previous;
+      }
+
+      if (eligible.length === 0) {
+        els.highRetado.innerHTML = `
+          <option value="">
+            No hay jugadores elegibles en ${escapeHTML(GAMEMODE_LABELS[gamemode] || gamemode)}
+          </option>
+        `;
+      }
+
+      updateHighPreview();
+    }
+
+    function updateNormalPreview() {
+      const tester = els.normalTester.value.trim() || "Tester";
+      const testeado = els.normalTesteado.value || "Testeado";
+      const gamemode =
+        GAMEMODE_LABELS[els.normalGamemode.value] ||
+        els.normalGamemode.value;
+      const tier = els.normalTier.value || "Tier";
+
+      els.normalPreview.textContent =
+        `${tester} evaluó a ${testeado} en ${gamemode}. Tier obtenido: ${tier}.`;
+    }
+
+    function updateHighPreview() {
+      const retador = els.highRetador.value || "Retador";
+      const retado = els.highRetado.value || "Retado";
+      const gamemode =
+        GAMEMODE_LABELS[els.highGamemode.value] ||
+        els.highGamemode.value;
+      const evaluacion =
+        els.highEval.value === "FAILED"
+          ? "Failed Eval"
+          : "Passed Eval";
+      const resultado = els.highResultado.value || "PASSED";
+      const desenlace =
+        els.highDesenlace.value === "LOST"
+          ? "Lost"
+          : "Won";
+      const marcador = els.highMarcador.value.trim() || "0-0";
+
+      els.highPreview.textContent =
+        `${retador} vs ${retado} · ${gamemode} · ${evaluacion} · ` +
+        `${resultado} · ${desenlace} ${marcador}.`;
+    }
+
+    function switchWorkspace(sectionId) {
+      els.workspaceTabs.forEach(tab => {
+        tab.classList.toggle(
+          "active",
+          tab.dataset.section === sectionId
+        );
+      });
+
+      els.workspaceSections.forEach(section => {
+        section.classList.toggle(
+          "active",
+          section.id === sectionId
+        );
+      });
+    }
+
+    function getHeadUrl(player) {
+      return player.skinHeadUrl ||
+        `https://mc-heads.net/avatar/${encodeURIComponent(
+          player.username || "Steve"
+        )}/160`;
+    }
+
+    function getTierClass(tier, isGeneral = false) {
+      if (!tier) return "tier-empty";
+
+      const value = String(tier).toUpperCase().trim();
+
+      if (isGeneral) {
+        if (value === "TIER 1") return "general-tier-1";
+        if (value === "TIER 2") return "general-tier-2";
+        if (value === "TIER 3") return "general-tier-3";
+        if (value === "TIER 4") return "general-tier-4";
+        if (value === "TIER 5") return "general-tier-5";
+        return "tier-empty";
+      }
+
+      if (value === "LT1") return "tier-lt1";
+      if (value === "HT1") return "tier-ht1";
+      if (value === "LT2") return "tier-lt2";
+      if (value === "HT2") return "tier-ht2";
+      if (value === "LT3") return "tier-lt3";
+      if (value === "HT3") return "tier-ht3";
+      if (value === "LT4") return "tier-lt4";
+      if (value === "HT4") return "tier-ht4";
+      if (value === "LT5") return "tier-lt5";
+      if (value === "HT5") return "tier-ht5";
+
+      return "tier-empty";
+    }
+
+    function escapeHTML(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function escapeJS(value) {
+      return String(value ?? "")
+        .replaceAll("\\", "\\\\")
+        .replaceAll("'", "\\'");
+    }
+
+    els.workspaceTabs.forEach(tab => {
+      tab.addEventListener("click", () => {
+        switchWorkspace(tab.dataset.section);
+      });
+    });
+
+    els.loginForm.addEventListener("submit", async event => {
+      event.preventDefault();
+
+      const username = els.loginUser.value.trim();
+      const password = els.loginPass.value;
+
+      try {
+        setLoading(true);
+        setMsg(els.loginMsg, "", "");
+
+        await login(username, password);
+
+        await Promise.all([
+          loadConfig(),
+          loadPlayers()
+        ]);
+
+        setMsg(
+          els.loginMsg,
+          "ok",
+          "Panel desbloqueado correctamente."
+        );
+      } catch (error) {
+        state.auth = null;
+        els.loginPass.value = "";
+        renderSession();
+        setMsg(els.loginMsg, "error", error.message);
+        els.loginPass.focus();
+      } finally {
+        setLoading(false);
+      }
+    });
+
+    els.createPlayerForm.addEventListener("submit", async event => {
+      event.preventDefault();
+
+      const username = els.mcUsername.value.trim();
+      const region = els.mcRegion.value;
+
+      if (!/^[A-Za-z0-9_]{1,16}$/.test(username)) {
+        setMsg(
+          els.createMsg,
+          "error",
+          "El usuario de Minecraft debe tener de 1 a 16 caracteres y solo puede usar letras, números o guion bajo."
+        );
+
+        return;
+      }
+
+      try {
+        setLoading(true);
+        setMsg(els.createMsg, "", "");
+
+        const result = await createPlayer(username, region);
+
+        els.mcUsername.value = "";
+
+        setMsg(
+          els.createMsg,
+          "ok",
+          `Jugador registrado: ${result.jugador.username}.`
+        );
+
+        await loadPlayers();
+      } catch (error) {
+        setMsg(els.createMsg, "error", error.message);
+      } finally {
+        setLoading(false);
+      }
+    });
+
+    els.peakSettingsForm.addEventListener("submit", async event => {
+      event.preventDefault();
+
+      const enabled = els.peakPointsMode.value === "peak";
+
+      try {
+        setLoading(true);
+        setMsg(els.peakSettingsMsg, "", "");
+
+        const result = await updatePeakPointsSetting(enabled);
+
+        state.usarPeakTierParaPuntos = Boolean(
+          result.ajustes?.usarPeakTierParaPuntos
+        );
+
+        if (state.config) {
+          state.config.ajustes = {
+            ...(state.config.ajustes || {}),
+            usarPeakTierParaPuntos:
+              state.usarPeakTierParaPuntos
+          };
+        }
+
+        renderPeakSettings();
+
+        setMsg(
+          els.peakSettingsMsg,
+          "ok",
+          state.usarPeakTierParaPuntos
+            ? `Peak Tier activado. Se recalcularon ${result.jugadoresActualizados || 0} jugadores.`
+            : `Peak Tier desactivado. Se recalcularon ${result.jugadoresActualizados || 0} jugadores con su tier actual.`
+        );
+
+        await loadPlayers();
+      } catch (error) {
+        setMsg(
+          els.peakSettingsMsg,
+          "error",
+          error.message
+        );
+      } finally {
+        setLoading(false);
+      }
+    });
+
+    els.normalTestForm.addEventListener("submit", async event => {
+      event.preventDefault();
+
+      const payload = {
+        tester: els.normalTester.value.trim(),
+        testeado: els.normalTesteado.value,
+        gamemode: els.normalGamemode.value,
+        tierObtenido: els.normalTier.value
+      };
+
+      if (
+        !payload.tester ||
+        !payload.testeado ||
+        !payload.gamemode ||
+        !payload.tierObtenido
+      ) {
+        setMsg(
+          els.normalTestMsg,
+          "error",
+          "Completa todos los campos del test normal."
+        );
+
+        return;
+      }
+
+      try {
+        setLoading(true);
+        setMsg(els.normalTestMsg, "", "");
+
+        const result = await publishNormalTest(payload);
+        const previous =
+          result.test?.resultados?.tierAnterior ||
+          "Ninguna";
+
+        setMsg(
+          els.normalTestMsg,
+          "ok",
+          `Test publicado. ${payload.testeado}: ${previous} → ${payload.tierObtenido}.`
+        );
+
+        els.normalTestForm.reset();
+        populateNormalTierOptions();
+        updateNormalPreview();
+
+        await loadPlayers();
+      } catch (error) {
+        setMsg(els.normalTestMsg, "error", error.message);
+      } finally {
+        setLoading(false);
+      }
+    });
+
+    els.highTestForm.addEventListener("submit", async event => {
+      event.preventDefault();
+
+      const payload = {
+        retador: els.highRetador.value,
+        retado: els.highRetado.value,
+        gamemode: els.highGamemode.value,
+        eval: els.highEval.value,
+        resultado: els.highResultado.value,
+        desenlace: els.highDesenlace.value,
+        marcador: els.highMarcador.value.trim()
+      };
+
+      if (
+        !payload.retador ||
+        !payload.retado ||
+        !payload.gamemode ||
+        !payload.eval ||
+        !payload.resultado ||
+        !payload.desenlace ||
+        !payload.marcador
+      ) {
+        setMsg(
+          els.highTestMsg,
+          "error",
+          "Completa todos los campos del High Test."
+        );
+
+        return;
+      }
+
+      if (payload.retador === payload.retado) {
+        setMsg(
+          els.highTestMsg,
+          "error",
+          "El retador y el retado no pueden ser la misma persona."
+        );
+
+        return;
+      }
+
+      if (!/^\d{1,3}\s*[-:]\s*\d{1,3}$/.test(payload.marcador)) {
+        setMsg(
+          els.highTestMsg,
+          "error",
+          "El marcador debe tener un formato como 8-7."
+        );
+
+        return;
+      }
+
+      try {
+        setLoading(true);
+        setMsg(els.highTestMsg, "", "");
+
+        const result = await publishHighTest(payload);
+        const retadorNuevo =
+          result.test?.cambiosTier?.retador?.nuevo ||
+          "Sin cambio";
+        const retadoNuevo =
+          result.test?.cambiosTier?.retado?.nuevo ||
+          "Sin cambio";
+
+        setMsg(
+          els.highTestMsg,
+          "ok",
+          `High Test publicado. Retador: ${retadorNuevo}. Retado: ${retadoNuevo}.`
+        );
+
+        els.highTestForm.reset();
+        populateEligibleRetados();
+        updateHighPreview();
+
+        await loadPlayers();
+      } catch (error) {
+        setMsg(els.highTestMsg, "error", error.message);
+      } finally {
+        setLoading(false);
+      }
+    });
+
+    [
+      els.normalTester,
+      els.normalTesteado,
+      els.normalGamemode,
+      els.normalTier
+    ].forEach(control => {
+      control.addEventListener("input", updateNormalPreview);
+      control.addEventListener("change", updateNormalPreview);
+    });
+
+    [
+      els.highMarcador,
+      els.highRetador,
+      els.highRetado,
+      els.highEval,
+      els.highResultado,
+      els.highDesenlace
+    ].forEach(control => {
+      control.addEventListener("input", updateHighPreview);
+      control.addEventListener("change", updateHighPreview);
+    });
+
+    els.highGamemode.addEventListener("change", () => {
+      populateEligibleRetados();
+      updateHighPreview();
+    });
+
+    els.searchInput.addEventListener("input", event => {
+      state.search = event.target.value;
+      renderPlayers();
+    });
+
+    els.regionFilter.addEventListener("change", event => {
+      state.region = event.target.value;
+      renderPlayers();
+    });
+
+    els.statusFilter.addEventListener("change", event => {
+      state.status = event.target.value;
+      renderPlayers();
+    });
+
+    els.sortSelect.addEventListener("change", event => {
+      state.sort = event.target.value;
+      renderPlayers();
+    });
+
+    els.reloadBtn.addEventListener("click", async () => {
+      setMsg(els.globalMsg, "", "");
+      setMsg(els.normalTestMsg, "", "");
+      setMsg(els.highTestMsg, "", "");
+      setMsg(els.peakSettingsMsg, "", "");
+
+      await Promise.all([
+        loadConfig(),
+        loadPlayers()
+      ]);
+    });
+
+    async function init() {
+      setLoading(true);
+
+      state.auth = null;
+      state.config = null;
+      state.players = [];
+
+      renderSession();
+      setLoading(false);
+
+      requestAnimationFrame(() => {
+        els.loginUser.focus();
+      });
+    }
+
+    init();
+
+    window.handleSavePlayer = handleSavePlayer;
+    window.handleRetirement = handleRetirement;
+    window.handleDeletePlayer = handleDeletePlayer;
+    window.logout = logout;
+  </script>
+</body>
+</html>

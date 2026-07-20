@@ -1,0 +1,655 @@
+[
+  {
+    "id": "1784578896995",
+    "username": "FreshKoraii",
+    "uuid": "abe243af-bebc-4bc3-bc62-ce0bb99511cd",
+    "region": "NA",
+    "skinHeadUrl": "/api/skin-head/FreshKoraii?size=160",
+    "tiers": {
+      "sword": "HT3",
+      "nethpot": "LT3",
+      "uhc": "LT4"
+    },
+    "peakTiers": {
+      "sword": "HT3",
+      "nethpot": "LT3",
+      "uhc": "LT4"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-07-20T20:24:08.953Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-07-20T20:31:33.026Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-07-20T20:46:58.401Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "LT4",
+          "fecha": "2026-07-20T20:47:10.878Z"
+        }
+      ]
+    },
+    "retirado": false,
+    "fechaRetiro": null,
+    "retiradoPor": null,
+    "ultimaFechaRetiro": null,
+    "fechaReingreso": null,
+    "reingresadoPor": null,
+    "historialRetiros": [],
+    "fechaRegistro": "2026-07-20T20:21:36.995Z",
+    "tiersMostrados": {
+      "sword": "HT3",
+      "nethpot": "LT3",
+      "uhc": "LT4"
+    },
+    "tiersPuntuados": {
+      "sword": "HT3",
+      "nethpot": "LT3",
+      "uhc": "LT4"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 10,
+      "nethpot": 6,
+      "uhc": 3,
+      "total": 19
+    },
+    "tierGeneral": "Tier 4"
+  },
+  {
+    "id": "1784578906922",
+    "username": "Ubeliique",
+    "uuid": "56f55e4d-f918-4e3d-be78-dcf7528edb4a",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/Ubeliique?size=160",
+    "tiers": {
+      "sword": "HT3",
+      "nethpot": "LT2",
+      "uhc": "HT4"
+    },
+    "peakTiers": {
+      "sword": "HT3",
+      "nethpot": "LT2",
+      "uhc": "HT4"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "HT3",
+          "fecha": "2026-07-20T20:24:21.271Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "LT2",
+          "fecha": "2026-07-20T20:24:21.276Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "HT4",
+          "fecha": "2026-07-20T20:24:21.282Z"
+        }
+      ]
+    },
+    "retirado": false,
+    "fechaRetiro": null,
+    "retiradoPor": null,
+    "ultimaFechaRetiro": null,
+    "fechaReingreso": null,
+    "reingresadoPor": null,
+    "historialRetiros": [],
+    "fechaRegistro": "2026-07-20T20:21:46.922Z",
+    "tiersMostrados": {
+      "sword": "HT3",
+      "nethpot": "LT2",
+      "uhc": "HT4"
+    },
+    "tiersPuntuados": {
+      "sword": "HT3",
+      "nethpot": "LT2",
+      "uhc": "HT4"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 10,
+      "nethpot": 20,
+      "uhc": 4,
+      "total": 34
+    },
+    "tierGeneral": "Tier 3"
+  },
+  {
+    "id": "1784578912054",
+    "username": "EffectNova",
+    "uuid": "4e42a7c9-15f7-4a8c-b84c-902814822d17",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/EffectNova?size=160",
+    "tiers": {
+      "sword": "HT1",
+      "nethpot": "HT1",
+      "uhc": "LT3"
+    },
+    "peakTiers": {
+      "sword": "HT1",
+      "nethpot": "HT1",
+      "uhc": "LT3"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "HT1",
+          "fecha": "2026-07-20T20:23:02.792Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "HT1",
+          "fecha": "2026-07-20T20:23:02.799Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-07-20T20:23:02.805Z"
+        }
+      ]
+    },
+    "retirado": false,
+    "fechaRetiro": null,
+    "retiradoPor": null,
+    "ultimaFechaRetiro": null,
+    "fechaReingreso": null,
+    "reingresadoPor": null,
+    "historialRetiros": [],
+    "fechaRegistro": "2026-07-20T20:21:52.054Z",
+    "tiersMostrados": {
+      "sword": "HT1",
+      "nethpot": "HT1",
+      "uhc": "LT3"
+    },
+    "tiersPuntuados": {
+      "sword": "HT1",
+      "nethpot": "HT1",
+      "uhc": "LT3"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 60,
+      "nethpot": 60,
+      "uhc": 6,
+      "total": 126
+    },
+    "tierGeneral": "Tier 1"
+  },
+  {
+    "id": "1784578918054",
+    "username": "ArtiJ",
+    "uuid": "a8bfd510-daf5-484c-9210-857ae56c0c55",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/ArtiJ?size=160",
+    "tiers": {
+      "sword": "LT1",
+      "nethpot": "HT2",
+      "uhc": "LT1"
+    },
+    "peakTiers": {
+      "sword": "LT1",
+      "nethpot": "HT2",
+      "uhc": "LT1"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "LT1",
+          "fecha": "2026-07-20T20:23:09.735Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "HT2",
+          "fecha": "2026-07-20T20:23:09.739Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "HT2",
+          "fecha": "2026-07-20T20:23:09.744Z"
+        },
+        {
+          "tier": "LT1",
+          "fecha": "2026-07-20T20:23:40.621Z"
+        }
+      ]
+    },
+    "retirado": false,
+    "fechaRetiro": null,
+    "retiradoPor": null,
+    "ultimaFechaRetiro": null,
+    "fechaReingreso": null,
+    "reingresadoPor": null,
+    "historialRetiros": [],
+    "fechaRegistro": "2026-07-20T20:21:58.054Z",
+    "tiersMostrados": {
+      "sword": "LT1",
+      "nethpot": "HT2",
+      "uhc": "LT1"
+    },
+    "tiersPuntuados": {
+      "sword": "LT1",
+      "nethpot": "HT2",
+      "uhc": "LT1"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 40,
+      "nethpot": 30,
+      "uhc": 40,
+      "total": 110
+    },
+    "tierGeneral": "Tier 1"
+  },
+  {
+    "id": "1784578921849",
+    "username": "Varlyaaa",
+    "uuid": "0128a929-2e0d-49b6-b16a-9e69c8e11284",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/Varlyaaa?size=160",
+    "tiers": {
+      "sword": "HT1",
+      "nethpot": "HT1",
+      "uhc": "HT1"
+    },
+    "peakTiers": {
+      "sword": "HT1",
+      "nethpot": "HT1",
+      "uhc": "HT1"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "HT1",
+          "fecha": "2026-07-20T20:22:47.618Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "HT1",
+          "fecha": "2026-07-20T20:22:47.623Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "HT1",
+          "fecha": "2026-07-20T20:22:47.627Z"
+        }
+      ]
+    },
+    "retirado": false,
+    "fechaRetiro": null,
+    "retiradoPor": null,
+    "ultimaFechaRetiro": null,
+    "fechaReingreso": null,
+    "reingresadoPor": null,
+    "historialRetiros": [],
+    "fechaRegistro": "2026-07-20T20:22:01.849Z",
+    "tiersMostrados": {
+      "sword": "HT1",
+      "nethpot": "HT1",
+      "uhc": "HT1"
+    },
+    "tiersPuntuados": {
+      "sword": "HT1",
+      "nethpot": "HT1",
+      "uhc": "HT1"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 60,
+      "nethpot": 60,
+      "uhc": 60,
+      "total": 180
+    },
+    "tierGeneral": "Tier 1"
+  },
+  {
+    "id": "1784578945876",
+    "username": "lovekuudere",
+    "uuid": "47459894-2d69-4384-8379-e915cbd8a252",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/lovekuudere?size=160",
+    "tiers": {
+      "sword": "LT2",
+      "nethpot": "HT2",
+      "uhc": "HT2"
+    },
+    "peakTiers": {
+      "sword": "LT2",
+      "nethpot": "HT2",
+      "uhc": "HT2"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "LT2",
+          "fecha": "2026-07-20T20:23:25.333Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "HT2",
+          "fecha": "2026-07-20T20:23:25.342Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "HT2",
+          "fecha": "2026-07-20T20:23:25.348Z"
+        }
+      ]
+    },
+    "retirado": false,
+    "fechaRetiro": null,
+    "retiradoPor": null,
+    "ultimaFechaRetiro": null,
+    "fechaReingreso": null,
+    "reingresadoPor": null,
+    "historialRetiros": [],
+    "fechaRegistro": "2026-07-20T20:22:25.876Z",
+    "tiersMostrados": {
+      "sword": "LT2",
+      "nethpot": "HT2",
+      "uhc": "HT2"
+    },
+    "tiersPuntuados": {
+      "sword": "LT2",
+      "nethpot": "HT2",
+      "uhc": "HT2"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 20,
+      "nethpot": 30,
+      "uhc": 30,
+      "total": 80
+    },
+    "tierGeneral": "Tier 2"
+  },
+  {
+    "id": "1784578954021",
+    "username": "nFyq_",
+    "uuid": "77c3b501-f1c0-4a34-8845-1c0ccdfe116c",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/nFyq_?size=160",
+    "tiers": {
+      "sword": "LT1",
+      "nethpot": "LT1",
+      "uhc": "HT3"
+    },
+    "peakTiers": {
+      "sword": "LT1",
+      "nethpot": "HT1",
+      "uhc": "HT3"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "LT1",
+          "fecha": "2026-07-20T20:23:36.059Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "HT1",
+          "fecha": "2026-07-20T20:23:36.063Z"
+        },
+        {
+          "tier": "LT1",
+          "fecha": "2026-07-20T20:36:08.146Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "HT3",
+          "fecha": "2026-07-20T20:23:36.068Z"
+        }
+      ]
+    },
+    "retirado": false,
+    "fechaRetiro": null,
+    "retiradoPor": null,
+    "ultimaFechaRetiro": null,
+    "fechaReingreso": null,
+    "reingresadoPor": null,
+    "historialRetiros": [],
+    "fechaRegistro": "2026-07-20T20:22:34.021Z",
+    "tiersMostrados": {
+      "sword": "LT1",
+      "nethpot": "LT1",
+      "uhc": "HT3"
+    },
+    "tiersPuntuados": {
+      "sword": "LT1",
+      "nethpot": "LT1",
+      "uhc": "HT3"
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 40,
+      "nethpot": 40,
+      "uhc": 10,
+      "total": 90
+    },
+    "tierGeneral": "Tier 2"
+  },
+  {
+    "id": "1784578959815",
+    "username": "NotReallySlappp",
+    "uuid": "34ec6220-0bb7-425f-95c0-2ac9e56abe95",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/NotReallySlappp?size=160",
+    "tiers": {
+      "sword": "LT3",
+      "nethpot": null,
+      "uhc": null
+    },
+    "peakTiers": {
+      "sword": "HT3",
+      "nethpot": null,
+      "uhc": null
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "HT3",
+          "fecha": "2026-07-20T20:32:09.522Z"
+        },
+        {
+          "tier": "LT3",
+          "fecha": "2026-07-20T20:33:31.055Z"
+        }
+      ],
+      "nethpot": [],
+      "uhc": []
+    },
+    "retirado": false,
+    "fechaRetiro": null,
+    "retiradoPor": null,
+    "ultimaFechaRetiro": null,
+    "fechaReingreso": null,
+    "reingresadoPor": null,
+    "historialRetiros": [],
+    "fechaRegistro": "2026-07-20T20:22:39.815Z",
+    "tiersMostrados": {
+      "sword": "LT3",
+      "nethpot": null,
+      "uhc": null
+    },
+    "tiersPuntuados": {
+      "sword": "LT3",
+      "nethpot": null,
+      "uhc": null
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 6,
+      "nethpot": 0,
+      "uhc": 0,
+      "total": 6
+    },
+    "tierGeneral": "Tier 5"
+  },
+  {
+    "id": "1784579595376",
+    "username": "Ivanliique",
+    "uuid": "c8c9565c-f3d6-41c6-85d9-66832cb832dd",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/Ivanliique?size=160",
+    "tiers": {
+      "sword": "HT3",
+      "nethpot": null,
+      "uhc": null
+    },
+    "peakTiers": {
+      "sword": "HT3",
+      "nethpot": null,
+      "uhc": null
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-07-20T20:33:21.190Z"
+        },
+        {
+          "tier": "HT3",
+          "fecha": "2026-07-20T20:33:31.054Z"
+        }
+      ],
+      "nethpot": [],
+      "uhc": []
+    },
+    "retirado": false,
+    "fechaRetiro": null,
+    "retiradoPor": null,
+    "ultimaFechaRetiro": null,
+    "fechaReingreso": null,
+    "reingresadoPor": null,
+    "historialRetiros": [],
+    "fechaRegistro": "2026-07-20T20:33:15.376Z",
+    "tiersMostrados": {
+      "sword": "HT3",
+      "nethpot": null,
+      "uhc": null
+    },
+    "tiersPuntuados": {
+      "sword": "HT3",
+      "nethpot": null,
+      "uhc": null
+    },
+    "fuentePuntos": "TIER_ACTUAL",
+    "puntos": {
+      "sword": 10,
+      "nethpot": 0,
+      "uhc": 0,
+      "total": 10
+    },
+    "tierGeneral": "Tier 5"
+  },
+  {
+    "id": "1784584808777",
+    "username": "xekaiiitzDM",
+    "uuid": "591e2f9b-e5d9-41bd-ae03-198996b345f1",
+    "region": "SA",
+    "skinHeadUrl": "/api/skin-head/xekaiiitzDM?size=160",
+    "tiers": {
+      "sword": "LT3",
+      "nethpot": "LT3",
+      "uhc": "LT4"
+    },
+    "peakTiers": {
+      "sword": "LT3",
+      "nethpot": "LT3",
+      "uhc": "LT4"
+    },
+    "historialTiers": {
+      "sword": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-07-20T22:00:20.115Z"
+        }
+      ],
+      "nethpot": [
+        {
+          "tier": "LT3",
+          "fecha": "2026-07-20T22:00:20.123Z"
+        }
+      ],
+      "uhc": [
+        {
+          "tier": "LT4",
+          "fecha": "2026-07-20T22:00:20.130Z"
+        }
+      ]
+    },
+    "retirado": true,
+    "fechaRetiro": "2026-07-20T22:01:03.237Z",
+    "retiradoPor": "root",
+    "ultimaFechaRetiro": "2026-07-20T22:01:03.237Z",
+    "fechaReingreso": null,
+    "reingresadoPor": null,
+    "historialRetiros": [
+      {
+        "accion": "RETIRADO",
+        "fecha": "2026-07-20T22:01:03.237Z",
+        "por": "root",
+        "tiers": {
+          "sword": "LT3",
+          "nethpot": "LT3",
+          "uhc": "LT4"
+        },
+        "peakTiers": {
+          "sword": "LT3",
+          "nethpot": "LT3",
+          "uhc": "LT4"
+        },
+        "puntos": {
+          "sword": 6,
+          "nethpot": 6,
+          "uhc": 3,
+          "total": 15
+        },
+        "tierGeneral": "Tier 4"
+      }
+    ],
+    "fechaRegistro": "2026-07-20T22:00:08.777Z",
+    "tiersMostrados": {
+      "sword": "RLT3",
+      "nethpot": "RLT3",
+      "uhc": "RLT4"
+    },
+    "tiersPuntuados": {
+      "sword": null,
+      "nethpot": null,
+      "uhc": null
+    },
+    "fuentePuntos": "RETIRADO",
+    "puntos": {
+      "sword": 0,
+      "nethpot": 0,
+      "uhc": 0,
+      "total": 0
+    },
+    "tierGeneral": "RET"
+  }
+]

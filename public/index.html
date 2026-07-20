@@ -1,0 +1,1607 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Página oficial de la Brigada de Operaciones Especiales Lautaro."
+  />
+
+  <title>BOEL | Brigada de Operaciones Especiales Lautaro</title>
+
+  <style>
+    :root {
+      --bg: #030405;
+      --bg-soft: #07090c;
+      --panel: #0b0e13;
+      --panel-2: #11161e;
+      --panel-3: #151c27;
+
+      --text: #f5f7fb;
+      --muted: #9ba4b3;
+      --line: rgba(255, 255, 255, 0.08);
+      --line-gold: rgba(218, 184, 73, 0.3);
+
+      --gold: #dab849;
+      --gold-light: #f4d879;
+      --gold-dark: #7a5d17;
+
+      --blue: #4e87d9;
+      --red: #b93e47;
+      --green: #4fa16b;
+
+      --shadow: 0 24px 70px rgba(0, 0, 0, 0.48);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --max-width: 1320px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      background:
+        radial-gradient(circle at 50% -10%, rgba(218, 184, 73, 0.12), transparent 32%),
+        radial-gradient(circle at 8% 40%, rgba(78, 135, 217, 0.07), transparent 24%),
+        linear-gradient(180deg, #020303 0%, #06080b 42%, #030405 100%);
+      color: var(--text);
+      font-family: Inter, "Segoe UI", Arial, sans-serif;
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      content: "";
+      pointer-events: none;
+      opacity: 0.18;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+      background-size: 46px 46px;
+      mask-image: linear-gradient(to bottom, black, transparent 78%);
+    }
+
+    body::after {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      content: "";
+      pointer-events: none;
+      background:
+        linear-gradient(115deg, transparent 0 48%, rgba(218, 184, 73, 0.025) 48% 49%, transparent 49%),
+        linear-gradient(65deg, transparent 0 63%, rgba(255, 255, 255, 0.018) 63% 64%, transparent 64%);
+    }
+
+    a,
+    button {
+      font: inherit;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      border: 0;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .page-shell {
+      width: min(var(--max-width), calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    /* NAV */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      padding: 14px 0;
+      background: rgba(3, 4, 5, 0.78);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+      backdrop-filter: blur(18px);
+    }
+
+    .nav-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      min-width: 0;
+    }
+
+    .brand-logo-box {
+      width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      overflow: hidden;
+      border: 1px solid var(--line-gold);
+      border-radius: 14px;
+      background: #080a0d;
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
+    }
+
+    .brand-logo {
+      width: 39px;
+      height: 39px;
+      object-fit: contain;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-copy strong {
+      display: block;
+      color: white;
+      font-size: 17px;
+      letter-spacing: 0.055em;
+      white-space: nowrap;
+    }
+
+    .brand-copy span {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(10, 13, 18, 0.86);
+    }
+
+    .nav-link {
+      min-height: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 17px;
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: 0.045em;
+      text-transform: uppercase;
+      transition: 0.18s ease;
+    }
+
+    .nav-link:hover {
+      color: white;
+      background: rgba(255, 255, 255, 0.055);
+    }
+
+    .nav-link.active {
+      color: #161208;
+      background: linear-gradient(180deg, var(--gold-light), var(--gold));
+      box-shadow: 0 9px 22px rgba(218, 184, 73, 0.18);
+    }
+
+    .nav-login {
+      border: 1px solid rgba(218, 184, 73, 0.28);
+      color: var(--gold-light);
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 690px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(360px, 0.82fr);
+      align-items: center;
+      gap: 60px;
+      padding: 84px 0 72px;
+    }
+
+    .hero::before {
+      position: absolute;
+      top: 28px;
+      right: -180px;
+      width: 600px;
+      height: 600px;
+      content: "";
+      pointer-events: none;
+      border-radius: 50%;
+      border: 1px solid rgba(218, 184, 73, 0.07);
+      box-shadow:
+        0 0 0 70px rgba(218, 184, 73, 0.018),
+        0 0 0 140px rgba(218, 184, 73, 0.012);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 34px;
+      padding: 0 14px;
+      margin-bottom: 20px;
+      border: 1px solid var(--line-gold);
+      border-radius: 999px;
+      color: var(--gold-light);
+      background: rgba(218, 184, 73, 0.06);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      width: 7px;
+      height: 7px;
+      content: "";
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 14px rgba(218, 184, 73, 0.8);
+    }
+
+    .hero-title {
+      max-width: 900px;
+      color: white;
+      font-size: clamp(48px, 7vw, 96px);
+      line-height: 0.88;
+      letter-spacing: -0.065em;
+      text-transform: uppercase;
+    }
+
+    .hero-title span {
+      display: block;
+      margin-top: 12px;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(244, 216, 121, 0.8);
+      text-shadow: 0 0 34px rgba(218, 184, 73, 0.13);
+    }
+
+    .hero-description {
+      max-width: 720px;
+      margin-top: 25px;
+      color: #b6beca;
+      font-size: 16px;
+      line-height: 1.78;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .primary-action,
+    .secondary-action {
+      min-height: 50px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 22px;
+      border-radius: 13px;
+      font-size: 12px;
+      font-weight: 1000;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: 0.18s ease;
+    }
+
+    .primary-action {
+      color: #171207;
+      border: 1px solid rgba(244, 216, 121, 0.58);
+      background: linear-gradient(180deg, var(--gold-light), #ba942f);
+      box-shadow: 0 14px 30px rgba(218, 184, 73, 0.17);
+    }
+
+    .primary-action:hover {
+      filter: brightness(1.08);
+      transform: translateY(-2px);
+    }
+
+    .secondary-action {
+      color: white;
+      border: 1px solid var(--line);
+      background: #0b0f15;
+    }
+
+    .secondary-action:hover {
+      color: var(--gold-light);
+      border-color: var(--line-gold);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 36px;
+    }
+
+    .hero-stat {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: rgba(10, 13, 18, 0.68);
+    }
+
+    .hero-stat strong {
+      display: block;
+      color: white;
+      font-size: 23px;
+      margin-bottom: 5px;
+    }
+
+    .hero-stat span {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .hero-emblem {
+      position: relative;
+      z-index: 2;
+      min-height: 490px;
+      display: grid;
+      place-items: center;
+    }
+
+    .emblem-frame {
+      position: relative;
+      width: min(100%, 450px);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      border: 1px solid rgba(218, 184, 73, 0.24);
+      background:
+        radial-gradient(circle, rgba(218, 184, 73, 0.11), transparent 52%),
+        #080a0d;
+      box-shadow:
+        inset 0 0 80px rgba(218, 184, 73, 0.045),
+        0 40px 100px rgba(0, 0, 0, 0.58);
+    }
+
+    .emblem-frame::before,
+    .emblem-frame::after {
+      position: absolute;
+      content: "";
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .emblem-frame::before {
+      inset: 28px;
+      border: 1px dashed rgba(218, 184, 73, 0.2);
+      animation: rotateRing 34s linear infinite;
+    }
+
+    .emblem-frame::after {
+      inset: 66px;
+      border: 1px solid rgba(255, 255, 255, 0.055);
+    }
+
+    @keyframes rotateRing {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .hero-logo {
+      position: relative;
+      z-index: 2;
+      width: 56%;
+      max-height: 56%;
+      object-fit: contain;
+      filter:
+        drop-shadow(0 14px 30px rgba(0, 0, 0, 0.62))
+        drop-shadow(0 0 28px rgba(218, 184, 73, 0.1));
+    }
+
+    .emblem-label {
+      position: absolute;
+      left: 50%;
+      bottom: 52px;
+      z-index: 3;
+      transform: translateX(-50%);
+      color: var(--gold-light);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* SHARED */
+    .section {
+      padding: 76px 0;
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 30px;
+      margin-bottom: 26px;
+    }
+
+    .section-kicker {
+      display: block;
+      margin-bottom: 9px;
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 1000;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+
+    .section-title {
+      color: white;
+      font-size: clamp(30px, 4.5vw, 54px);
+      line-height: 0.98;
+      letter-spacing: -0.045em;
+      text-transform: uppercase;
+    }
+
+    .section-copy {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+      text-align: right;
+    }
+
+    /* TOP 3 */
+    .top-three {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .top-card {
+      position: relative;
+      min-height: 320px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(180deg, rgba(17, 22, 30, 0.94), rgba(7, 9, 13, 0.98));
+      box-shadow: var(--shadow);
+      transition: 0.18s ease;
+    }
+
+    .top-card:hover {
+      border-color: rgba(218, 184, 73, 0.25);
+      transform: translateY(-4px);
+    }
+
+    .top-card::before {
+      position: absolute;
+      inset: 0 0 auto;
+      height: 4px;
+      content: "";
+      background: var(--rank-color, var(--gold));
+    }
+
+    .top-card.rank-1 {
+      --rank-color: #e3bf4f;
+    }
+
+    .top-card.rank-2 {
+      --rank-color: #aeb7c6;
+    }
+
+    .top-card.rank-3 {
+      --rank-color: #af7040;
+    }
+
+    .top-card-inner {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      height: 100%;
+      padding: 20px;
+    }
+
+    .top-card-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .rank-number {
+      min-width: 50px;
+      height: 50px;
+      display: grid;
+      place-items: center;
+      border: 1px solid color-mix(in srgb, var(--rank-color) 60%, transparent);
+      border-radius: 14px;
+      color: var(--rank-color);
+      background: color-mix(in srgb, var(--rank-color) 9%, transparent);
+      font-size: 15px;
+      font-weight: 1000;
+    }
+
+    .top-player-head {
+      width: 84px;
+      height: 84px;
+      object-fit: cover;
+      image-rendering: pixelated;
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      background: #080a0d;
+    }
+
+    .top-card-main {
+      align-self: end;
+      padding-top: 32px;
+    }
+
+    .top-player-name {
+      color: white;
+      font-size: clamp(24px, 3vw, 32px);
+      line-height: 1;
+      letter-spacing: -0.035em;
+      word-break: break-word;
+    }
+
+    .top-player-region {
+      display: inline-flex;
+      margin-top: 11px;
+      padding: 6px 9px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .top-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-top: 24px;
+      padding-top: 15px;
+      border-top: 1px solid var(--line);
+    }
+
+    .general-tier-badge {
+      width: 47px;
+      height: 47px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      border: 2px solid rgba(255, 255, 255, 0.14);
+      border-radius: 50%;
+      background: var(--tier-general-color, #54575e);
+      color: white;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .top-points {
+      text-align: right;
+    }
+
+    .top-points strong {
+      display: block;
+      color: white;
+      font-size: 21px;
+    }
+
+    .top-points span {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .loading-card {
+      min-height: 250px;
+      display: grid;
+      place-items: center;
+      grid-column: 1 / -1;
+      border: 1px dashed var(--line);
+      border-radius: var(--radius-lg);
+      color: var(--muted);
+      background: rgba(10, 13, 18, 0.56);
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.8fr);
+      gap: 18px;
+    }
+
+    .about-main,
+    .command-card,
+    .mission-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(180deg, rgba(17, 22, 30, 0.94), rgba(7, 9, 13, 0.98));
+      box-shadow: var(--shadow);
+    }
+
+    .about-main {
+      position: relative;
+      overflow: hidden;
+      padding: 34px;
+    }
+
+    .about-main::after {
+      position: absolute;
+      right: -90px;
+      bottom: -120px;
+      width: 340px;
+      height: 340px;
+      content: "";
+      border-radius: 50%;
+      border: 1px solid rgba(218, 184, 73, 0.08);
+      box-shadow:
+        0 0 0 50px rgba(218, 184, 73, 0.014),
+        0 0 0 100px rgba(218, 184, 73, 0.008);
+    }
+
+    .about-main h3 {
+      position: relative;
+      z-index: 2;
+      max-width: 700px;
+      color: white;
+      font-size: clamp(29px, 4vw, 47px);
+      line-height: 1.02;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .about-main p {
+      position: relative;
+      z-index: 2;
+      max-width: 820px;
+      margin-top: 22px;
+      color: #afb7c3;
+      font-size: 15px;
+      line-height: 1.86;
+    }
+
+    .about-tagline {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 27px;
+    }
+
+    .about-chip {
+      padding: 8px 11px;
+      border: 1px solid var(--line-gold);
+      border-radius: 999px;
+      color: var(--gold-light);
+      background: rgba(218, 184, 73, 0.045);
+      font-size: 10px;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .about-side {
+      display: grid;
+      gap: 18px;
+    }
+
+    .command-card,
+    .mission-card {
+      padding: 24px;
+    }
+
+    .small-label {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 1000;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    .command-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .command-person {
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #090c11;
+    }
+
+    .command-person strong {
+      display: block;
+      color: white;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .command-person span {
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+    }
+
+    .mission-card strong {
+      display: block;
+      color: white;
+      font-size: 20px;
+      line-height: 1.2;
+    }
+
+    .mission-card p {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    /* RESULTS */
+    .results-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: 18px;
+    }
+
+    .recent-results {
+      display: grid;
+      gap: 11px;
+    }
+
+    .result-item {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 14px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: linear-gradient(180deg, #0c1016, #090c11);
+      transition: 0.16s ease;
+    }
+
+    .result-item:hover {
+      border-color: rgba(218, 184, 73, 0.2);
+      transform: translateX(3px);
+    }
+
+    .result-type {
+      min-width: 82px;
+      min-height: 30px;
+      display: inline-grid;
+      place-items: center;
+      padding: 0 10px;
+      border: 1px solid rgba(218, 184, 73, 0.26);
+      border-radius: 999px;
+      color: var(--gold-light);
+      background: rgba(218, 184, 73, 0.055);
+      font-size: 9px;
+      font-weight: 1000;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .result-type.high {
+      color: #a9c8ff;
+      border-color: rgba(78, 135, 217, 0.3);
+      background: rgba(78, 135, 217, 0.07);
+    }
+
+    .result-main strong {
+      display: block;
+      color: white;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    .result-main span {
+      display: block;
+      color: var(--muted);
+      font-size: 11px;
+      line-height: 1.45;
+    }
+
+    .result-date {
+      color: var(--muted);
+      font-size: 10px;
+      white-space: nowrap;
+    }
+
+    .results-cta {
+      position: relative;
+      overflow: hidden;
+      padding: 30px;
+      border: 1px solid var(--line-gold);
+      border-radius: var(--radius-lg);
+      background:
+        radial-gradient(circle at 90% 10%, rgba(218, 184, 73, 0.15), transparent 35%),
+        linear-gradient(180deg, #11151c, #080b0f);
+      box-shadow: var(--shadow);
+    }
+
+    .results-cta::after {
+      position: absolute;
+      right: -45px;
+      bottom: -45px;
+      width: 170px;
+      height: 170px;
+      content: "";
+      border: 1px solid rgba(218, 184, 73, 0.12);
+      border-radius: 50%;
+    }
+
+    .results-cta strong {
+      position: relative;
+      z-index: 2;
+      display: block;
+      max-width: 330px;
+      color: white;
+      font-size: 27px;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      text-transform: uppercase;
+    }
+
+    .results-cta p {
+      position: relative;
+      z-index: 2;
+      margin-top: 13px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .results-cta .secondary-action {
+      position: relative;
+      z-index: 2;
+      margin-top: 23px;
+    }
+
+    /* FINAL CTA */
+    .final-cta {
+      position: relative;
+      overflow: hidden;
+      margin: 26px auto 70px;
+      padding: 40px;
+      border: 1px solid var(--line-gold);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(105deg, rgba(218, 184, 73, 0.11), transparent 50%),
+        linear-gradient(180deg, #10141b, #080a0e);
+      box-shadow: var(--shadow);
+    }
+
+    .final-cta::after {
+      position: absolute;
+      inset: 0;
+      content: "";
+      pointer-events: none;
+      background:
+        linear-gradient(120deg, transparent 0 64%, rgba(255, 255, 255, 0.025) 64% 65%, transparent 65%);
+    }
+
+    .final-cta-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .final-cta h2 {
+      max-width: 800px;
+      color: white;
+      font-size: clamp(30px, 5vw, 55px);
+      line-height: 0.96;
+      letter-spacing: -0.045em;
+      text-transform: uppercase;
+    }
+
+    .final-cta h2 span {
+      color: var(--gold-light);
+    }
+
+    .final-cta p {
+      max-width: 620px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .footer {
+      padding: 0 0 28px;
+      color: #747d89;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1020px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+
+      .hero-emblem {
+        min-height: 380px;
+      }
+
+      .emblem-frame {
+        width: min(78vw, 430px);
+      }
+
+      .about-grid,
+      .results-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .top-three {
+        grid-template-columns: 1fr;
+      }
+
+      .top-card {
+        min-height: 250px;
+      }
+
+      .top-card-inner {
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        grid-template-rows: 1fr;
+        align-items: center;
+        gap: 22px;
+      }
+
+      .top-card-main {
+        align-self: center;
+        padding-top: 0;
+      }
+
+      .top-card-footer {
+        display: grid;
+        justify-items: end;
+        margin-top: 0;
+        padding-top: 0;
+        border-top: 0;
+      }
+    }
+
+    @media (max-width: 780px) {
+      .nav-wrap {
+        align-items: stretch;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        width: 100%;
+        overflow-x: auto;
+        justify-content: flex-start;
+        border-radius: 16px;
+        scrollbar-width: none;
+      }
+
+      .nav-links::-webkit-scrollbar {
+        display: none;
+      }
+
+      .nav-link {
+        flex: 0 0 auto;
+      }
+
+      .hero {
+        min-height: 0;
+        padding-top: 60px;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .section-copy {
+        text-align: left;
+      }
+
+      .final-cta-content {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .page-shell {
+        width: min(100% - 22px, var(--max-width));
+      }
+
+      .brand-copy span {
+        display: none;
+      }
+
+      .hero-title {
+        font-size: clamp(44px, 15vw, 68px);
+      }
+
+      .hero-description {
+        font-size: 14px;
+      }
+
+      .hero-actions {
+        display: grid;
+      }
+
+      .primary-action,
+      .secondary-action {
+        width: 100%;
+      }
+
+      .hero-emblem {
+        min-height: 310px;
+      }
+
+      .emblem-frame {
+        width: min(88vw, 340px);
+      }
+
+      .emblem-label {
+        bottom: 37px;
+      }
+
+      .section {
+        padding: 56px 0;
+      }
+
+      .top-card-inner {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-rows: auto auto;
+      }
+
+      .top-card-main {
+        grid-column: 1 / -1;
+      }
+
+      .top-card-footer {
+        justify-items: end;
+      }
+
+      .about-main,
+      .command-card,
+      .mission-card,
+      .results-cta,
+      .final-cta {
+        padding: 23px;
+      }
+
+      .result-item {
+        grid-template-columns: 1fr;
+      }
+
+      .result-type {
+        justify-self: start;
+      }
+
+      .result-date {
+        white-space: normal;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="page-shell nav-wrap">
+      <a class="brand" href="/" aria-label="Inicio BOEL">
+        <span class="brand-logo-box">
+          <img
+            class="brand-logo"
+            src="/boel.png"
+            alt="Logo BOEL"
+            onerror="this.style.display='none'"
+          />
+        </span>
+
+        <span class="brand-copy">
+          <strong>BOEL</strong>
+          <span>Brigada de Operaciones Especiales Lautaro</span>
+        </span>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a class="nav-link active" href="/">Inicio</a>
+        <a class="nav-link" href="/Tiers.html">Tiers</a>
+        <a class="nav-link" href="/results.html">Resultados</a>
+        <a class="nav-link nav-login" href="/admin.html">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-shell hero">
+      <div class="hero-content">
+        <span class="eyebrow">Activa desde 2021</span>
+
+        <h1 class="hero-title">
+          Brigada de Operaciones
+          <span>Especiales Lautaro</span>
+        </h1>
+
+        <p class="hero-description">
+          Nuestra primera línea de defensa y nuestros mejores elementos en combate
+          desde la versión 1.9. Una brigada formada para representar al Ejército
+          General del Orden en cada disputa, amenaza y desafío.
+        </p>
+
+        <div class="hero-actions">
+          <a class="primary-action" href="/Tiers.html">Explorar Tierlist</a>
+          <a class="secondary-action" href="#brigada">Conocer la Brigada</a>
+        </div>
+
+        <div class="hero-stats">
+          <article class="hero-stat">
+            <strong>2021</strong>
+            <span>Año de fundación</span>
+          </article>
+
+          <article class="hero-stat">
+            <strong>1.9+</strong>
+            <span>Combate competitivo</span>
+          </article>
+
+          <article class="hero-stat">
+            <strong>EGO</strong>
+            <span>Lealtad absoluta</span>
+          </article>
+        </div>
+      </div>
+
+      <div class="hero-emblem">
+        <div class="emblem-frame">
+          <img
+            class="hero-logo"
+            src="/boel.png"
+            alt="Emblema BOEL"
+            onerror="this.style.display='none'"
+          />
+          <span class="emblem-label">Primera línea de defensa</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="page-shell">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">Clasificación actual</span>
+            <h2 class="section-title">Top 3 de BOEL</h2>
+          </div>
+
+          <p class="section-copy">
+            Los jugadores con mayor puntuación general dentro de las modalidades
+            competitivas registradas.
+          </p>
+        </div>
+
+        <div id="topThree" class="top-three">
+          <div class="loading-card">Cargando clasificación...</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="brigada" class="section">
+      <div class="page-shell">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">Quiénes somos</span>
+            <h2 class="section-title">La Brigada</h2>
+          </div>
+
+          <p class="section-copy">
+            Lealtad, preparación y capacidad de combate al servicio del Ejército
+            General del Orden.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <article class="about-main">
+            <h3>Nuestra primera línea de defensa.</h3>
+
+            <p>
+              Nuestra primera línea de defensa, nuestros mejores elementos en combate
+              desde la versión 1.9. A cargo actualmente por el Teniente General
+              <strong style="color: white;">pinaaa_</strong> y el Subteniente
+              <strong style="color: white;">nFyq_</strong> como comandantes de la
+              Brigada y principales líderes. Fundada en el año 2021 y activa hasta la
+              actualidad, su principal objetivo es representar de la mejor manera al
+              Ejército General del Orden en situaciones de combate, con grandes
+              objetivos a futuro. Como comandantes de la Brigada, aseguramos que
+              nuestros integrantes entregan su total lealtad a EGO y se encuentran
+              preparados para cualquier disputa, amenaza o desafío para el Ejército.
+            </p>
+
+            <div class="about-tagline">
+              <span class="about-chip">Disciplina</span>
+              <span class="about-chip">Lealtad</span>
+              <span class="about-chip">Combate</span>
+              <span class="about-chip">Preparación</span>
+            </div>
+          </article>
+
+          <div class="about-side">
+            <article class="command-card">
+              <span class="small-label">Alto mando</span>
+
+              <div class="command-list">
+                <div class="command-person">
+                  <strong>pinaaa_</strong>
+                  <span>Teniente General · Comandante</span>
+                </div>
+
+                <div class="command-person">
+                  <strong>nFyq_</strong>
+                  <span>Subteniente · Comandante</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="mission-card">
+              <span class="small-label">Misión</span>
+              <strong>Representar a EGO en las situaciones de combate más exigentes.</strong>
+              <p>
+                Mantener una fuerza preparada para responder ante cualquier amenaza,
+                proteger los intereses del Ejército y elevar el nivel competitivo de
+                sus integrantes.
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="page-shell">
+        <div class="section-heading">
+          <div>
+            <span class="section-kicker">Actividad competitiva</span>
+            <h2 class="section-title">Últimos resultados</h2>
+          </div>
+
+          <p class="section-copy">
+            Tests normales y High Tests publicados recientemente en el sistema.
+          </p>
+        </div>
+
+        <div class="results-layout">
+          <div id="recentResults" class="recent-results">
+            <div class="loading-card">Cargando resultados...</div>
+          </div>
+
+          <aside class="results-cta">
+            <strong>Consulta todos los resultados oficiales.</strong>
+            <p>
+              Revisa los tiers obtenidos, High Tests, evaluaciones, marcadores y
+              cambios registrados dentro de la Brigada.
+            </p>
+            <a class="secondary-action" href="/results.html">Ver resultados</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-shell final-cta">
+      <div class="final-cta-content">
+        <div>
+          <h2>
+            Preparados para cualquier
+            <span>disputa, amenaza o desafío.</span>
+          </h2>
+
+          <p>
+            Accede a la clasificación completa, conoce los tiers de cada modalidad
+            y consulta el historial competitivo de los integrantes de BOEL.
+          </p>
+        </div>
+
+        <a class="primary-action" href="/Tiers.html">Entrar a la Tierlist</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-shell footer">
+    BOEL · Brigada de Operaciones Especiales Lautaro · Ejército General del Orden
+  </footer>
+
+  <script>
+    const API_BASE = "/api";
+
+    const GENERAL_ROMAN = {
+      "TIER 1": "I",
+      "TIER 2": "II",
+      "TIER 3": "III",
+      "TIER 4": "IV",
+      "TIER 5": "V"
+    };
+
+    const GENERAL_COLORS = {
+      "TIER 1": "#f5d049",
+      "TIER 2": "#b79231",
+      "TIER 3": "#8b7336",
+      "TIER 4": "#6e6143",
+      "TIER 5": "#54575e"
+    };
+
+    const MODE_NAMES = {
+      sword: "Sword",
+      nethpot: "NethPot",
+      uhc: "UHC"
+    };
+
+    const topThree = document.getElementById("topThree");
+    const recentResults = document.getElementById("recentResults");
+
+    async function fetchJSON(url) {
+      const response = await fetch(url, {
+        headers: {
+          Accept: "application/json"
+        },
+        cache: "no-store"
+      });
+
+      const text = await response.text();
+      let data = null;
+
+      try {
+        data = text ? JSON.parse(text) : null;
+      } catch {
+        data = null;
+      }
+
+      if (!response.ok) {
+        throw new Error(data?.error || text || `Error HTTP ${response.status}`);
+      }
+
+      return data;
+    }
+
+    function getHeadUrl(player) {
+      return player.skinHeadUrl ||
+        `https://mc-heads.net/avatar/${encodeURIComponent(player.username || "Steve")}/160`;
+    }
+
+    function getRomanTier(tier) {
+      return GENERAL_ROMAN[String(tier || "Tier 5").toUpperCase()] || "V";
+    }
+
+    function getGeneralColor(tier) {
+      return GENERAL_COLORS[String(tier || "Tier 5").toUpperCase()] || GENERAL_COLORS["TIER 5"];
+    }
+
+    function escapeHTML(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function formatDate(value) {
+      const date = new Date(value);
+
+      if (Number.isNaN(date.getTime())) {
+        return "Fecha desconocida";
+      }
+
+      return new Intl.DateTimeFormat("es-MX", {
+        dateStyle: "medium"
+      }).format(date);
+    }
+
+    function renderTopThree(players) {
+      if (!Array.isArray(players) || players.length === 0) {
+        topThree.innerHTML = `
+          <div class="loading-card">
+            No hay jugadores disponibles en la clasificación.
+          </div>
+        `;
+        return;
+      }
+
+      topThree.innerHTML = players.slice(0, 3).map((player, index) => {
+        const rank = index + 1;
+        const tier = player.tierGeneral || "Tier 5";
+        const points = player.puntos?.total ?? 0;
+
+        return `
+          <a
+            class="top-card rank-${rank}"
+            href="/Tiers.html"
+            aria-label="Ver tierlist de ${escapeHTML(player.username)}"
+          >
+            <div class="top-card-inner">
+              <div class="top-card-head">
+                <span class="rank-number">#${rank}</span>
+
+                <img
+                  class="top-player-head"
+                  src="${getHeadUrl(player)}"
+                  alt="Skin de ${escapeHTML(player.username)}"
+                  onerror="this.src='https://mc-heads.net/avatar/Steve/160'"
+                />
+              </div>
+
+              <div class="top-card-main">
+                <h3 class="top-player-name">${escapeHTML(player.username)}</h3>
+                <span class="top-player-region">${escapeHTML(player.region || "—")}</span>
+              </div>
+
+              <div class="top-card-footer">
+                <span
+                  class="general-tier-badge"
+                  style="--tier-general-color: ${getGeneralColor(tier)}"
+                  title="${escapeHTML(tier)}"
+                >
+                  ${getRomanTier(tier)}
+                </span>
+
+                <span class="top-points">
+                  <strong>${points}</strong>
+                  <span>Puntos</span>
+                </span>
+              </div>
+            </div>
+          </a>
+        `;
+      }).join("");
+    }
+
+    function renderRecentResults(tests) {
+      if (!Array.isArray(tests) || tests.length === 0) {
+        recentResults.innerHTML = `
+          <div class="loading-card">
+            Todavía no hay resultados publicados.
+          </div>
+        `;
+        return;
+      }
+
+      const latest = [...tests]
+        .sort((a, b) => new Date(b.fecha || 0) - new Date(a.fecha || 0))
+        .slice(0, 5);
+
+      recentResults.innerHTML = latest.map(test => {
+        const mode = MODE_NAMES[test.gamemode] || test.gamemode || "—";
+
+        if (test.tipo === "HIGH") {
+          return `
+            <article class="result-item">
+              <span class="result-type high">High Test</span>
+
+              <div class="result-main">
+                <strong>
+                  ${escapeHTML(test.retador || "—")}
+                  vs
+                  ${escapeHTML(test.retado || "—")}
+                </strong>
+
+                <span>
+                  ${escapeHTML(mode)}
+                  · ${escapeHTML(test.resultado || "—")}
+                  · ${escapeHTML(test.desenlace || "—")}
+                  · ${escapeHTML(test.marcador || "—")}
+                </span>
+              </div>
+
+              <time class="result-date">${escapeHTML(formatDate(test.fecha))}</time>
+            </article>
+          `;
+        }
+
+        return `
+          <article class="result-item">
+            <span class="result-type">Test normal</span>
+
+            <div class="result-main">
+              <strong>
+                ${escapeHTML(test.testeado || "—")}
+                obtuvo
+                ${escapeHTML(test.resultados?.tierObtenido || "—")}
+              </strong>
+
+              <span>
+                ${escapeHTML(mode)}
+                · Tester ${escapeHTML(test.tester || "—")}
+              </span>
+            </div>
+
+            <time class="result-date">${escapeHTML(formatDate(test.fecha))}</time>
+          </article>
+        `;
+      }).join("");
+    }
+
+    async function loadHomepage() {
+      const [leaderboardResult, testsResult] = await Promise.allSettled([
+        fetchJSON(`${API_BASE}/leaderboard`),
+        fetchJSON(`${API_BASE}/tests`)
+      ]);
+
+      if (leaderboardResult.status === "fulfilled") {
+        renderTopThree(leaderboardResult.value);
+      } else {
+        topThree.innerHTML = `
+          <div class="loading-card">
+            No se pudo conectar con la clasificación.
+          </div>
+        `;
+      }
+
+      if (testsResult.status === "fulfilled") {
+        renderRecentResults(testsResult.value);
+      } else {
+        recentResults.innerHTML = `
+          <div class="loading-card">
+            No se pudieron cargar los resultados recientes.
+          </div>
+        `;
+      }
+    }
+
+    loadHomepage();
+  </script>
+</body>
+</html>
